@@ -1,6 +1,16 @@
+.title {
+    color: var(--text);
+    margin: 20px;
+    font-weight: 700;
+    font-size: 70px;
+}
+
 .timer-container {
-    margin: auto;
-    padding: 40vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
     text-align: center;
 }
 
@@ -13,5 +23,5 @@
 
 .instructions {
     font-size: 1.2em;
-    color: #9b9b9b;
+    color: var(--foreground);
 }
