@@ -1,0 +1,17 @@
+.timer-container {
+    margin: auto;
+    padding: 40vh 0;
+    text-align: center;
+}
+
+#timer {
+    color: var(--text);
+    font-size: 7em;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.instructions {
+    font-size: 1.2em;
+    color: #9b9b9b;
+}
