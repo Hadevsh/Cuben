@@ -9,3 +9,13 @@ function closeNav() {
     document.getElementById("sidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
+
+const imageContainer = document.querySelector('.image');
+const hoverText = document.querySelector('.hover-text');
+
+imageContainer.addEventListener('mousemove', (e) => {
+    const x = e.clientX - imageContainer.offsetLeft;
+    const y = e.clientY - imageContainer.offsetTop;
+    hoverText.style.left = `${x}px`;
+    hoverText.style.top = `${y}px`;
+});
