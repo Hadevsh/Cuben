@@ -6,7 +6,7 @@ let running = false;
 let preparing = false;
 let holdTimeout;
 
-let greenColor = 'rgb(114, 232, 46)'; // Must be rgb for styling comapring
+let greenColor = 'rgb(114, 232, 46)'; // Must be rgb for styling comparing
 let whiteColor = '#fff';
 let redColor = '#e82e2e';
 
