@@ -18,3 +18,17 @@
     font-size: 1.2em;
     color: var(--foreground);
 }
+
+#settings-btn {
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    right: 20px;
+    color: var(--foreground);
+    transition: 0.3s;
+}
+
+#settings-btn:hover {
+    cursor: pointer;
+    color: var(--text);
+}

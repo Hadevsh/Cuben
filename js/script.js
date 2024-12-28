@@ -17,5 +17,5 @@ imageContainer.addEventListener('mousemove', (e) => {
     const x = e.clientX - imageContainer.offsetLeft;
     const y = e.clientY - imageContainer.offsetTop;
     hoverText.style.left = `${x}px`;
-    hoverText.style.top = `${y}px`;
+    hoverText.style.top = `${y + 15}px`;
 });
