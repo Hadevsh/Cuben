@@ -61,3 +61,37 @@ function updateTimer() {
 function pad(number) {
     return number.toString().padStart(2, '0');
 }
+
+// Setting menu
+// Get the modal element and settings button
+const modal = document.getElementById("settings-modal");
+const settingsBtn = document.getElementById("settings-btn");
+
+// Open the settings modal
+settingsBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Close the modal
+function closeSettings() {
+    modal.style.display = "none";
+}
+
+// Save settings (example functionality)
+function saveSettings() {
+    const inspectionTime = document.getElementById("inspection-time").value;
+    const soundEnabled = document.getElementById("sound-toggle").checked;
+
+    console.log("Settings Saved:");
+    console.log("Inspection Time:", inspectionTime);
+    console.log("Sound Enabled:", soundEnabled);
+
+    closeSettings(); // Close the modal after saving
+}
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        closeSettings();
+    }
+});
