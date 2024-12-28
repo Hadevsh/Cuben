@@ -6,7 +6,7 @@ let running = false;
 let preparing = false;
 let holdTimeout;
 
-let greenColor = '#72e82e';
+let greenColor = 'rgb(114, 232, 46)'; // Must be rgb for styling comapring
 let whiteColor = '#fff';
 let redColor = '#e82e2e';
 
@@ -62,7 +62,7 @@ function pad(number) {
     return number.toString().padStart(2, '0');
 }
 
-// Setting menu
+// Settings menu
 // Get the modal element and settings button
 const modal = document.getElementById("settings-modal");
 const settingsBtn = document.getElementById("settings-btn");
