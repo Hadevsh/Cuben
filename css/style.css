@@ -3,6 +3,7 @@
 :root {
     --background: #202020;
     --nav-background: #1b1b1b;
+    --darker-background: #0f0f0f;
     --text: #fff;
     --foreground: #bbbbbb;
 }
