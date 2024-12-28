@@ -25,10 +25,11 @@
     top: 20px;
     right: 20px;
     color: var(--foreground);
-    transition: 0.3s;
+    transition: color 0.3s, transform 0.5s ease;
 }
 
 #settings-btn:hover {
+    transform: rotate(90deg);
     cursor: pointer;
     color: var(--text);
 }
