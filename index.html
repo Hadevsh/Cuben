@@ -26,7 +26,7 @@
         <div class="timer-container">
             <div id="timer">00:00.00</div>
             <div class="instructions">Press and hold the spacebar to start. Release to start the timer. Press again to stop.</div>
-            <button class="save-time">Save Time</button>
+            <button class="save-time" onclick="addTimeToSession()">Save Time</button>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
                 </select><br><br>
 
                 <label for="best-n">Best of N:</label>
-                <select name="average-n" id="average-n">
+                <select name="best-n" id="best-n">
                     <option value="none">None</option>
                     <option value="Bo5">Bo5</option>
                     <option value="Bo12">Bo12</option>
@@ -76,7 +76,7 @@
                 <input type="checkbox" id="best-worst-toggle" checked><br><br>
 
                 <label for="penalties">Add Penalties:</label>
-                <input type="checkbox" id="penalties"><br><br>
+                <input type="checkbox" id="penalties-toggle"><br><br>
 
                 <h3>Sound:</h3>
                 <label for="sound-toggle">Enable Sound:</label>

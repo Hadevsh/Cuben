@@ -95,3 +95,63 @@ window.addEventListener("click", (event) => {
         closeSettings();
     }
 });
+
+// Save time
+// Example data to collect
+let sessionData = {
+    times: [], // Array to store recorded times
+    settings: {
+        category: "3x3", // Default category
+        saveTime: "manual",
+        aon: null,
+        bon: null,
+        scrambles: false,
+        bw: true,
+        penalties: false
+    }
+};
+
+// Function to save current timer time
+function addTimeToSession() {
+    time = document.getElementById("timer").innerHTML;
+    sessionData.times.push(time);
+    console.log("Logged time to session", time);
+}
+
+// Function to update settings
+function updateSettings() {
+    const category = document.getElementById("category").value;
+    const saveTime = document.getElementById("save-time").value;
+    const aon = document.getElementById("average-n").value;
+    const bon = document.getElementById("best-n").value;
+    const scramble = document.getElementById("scrambles-toggle").value;
+    const bw = document.getElementById("best-worst-toggle").value;
+    const penalties = document.getElementById("penalties-toggle").value;
+
+    sessionData.settings.category = category;
+    sessionData.settings.saveTime = saveTime;
+    sessionData.settings.aon = aon;
+    sessionData.settings.bon = bon;
+    sessionData.settings.scramble = scramble;
+    sessionData.settings.bw = bw;
+    sessionData.settings.penalties = penalties;
+
+    console.log("Settings Updated:", sessionData.settings);
+}
+
+// Function to save session data as JSON
+function saveAsJSON() {
+    const dataStr = JSON.stringify(sessionData, null, 4); // Convert object to JSON string
+    const blob = new Blob([dataStr], { type: "application/json" }); // Create a JSON file
+    const url = URL.createObjectURL(blob); // Generate download link
+
+    const a = document.createElement("a"); // Create an anchor element
+    a.href = url;
+    a.download = "sessionData.json"; // Set the file name
+    document.body.appendChild(a);
+    a.click(); // Trigger download
+    document.body.removeChild(a); // Clean up
+}
+
+// Example usage: Record a time
+// addTimeToSession("00:12.34"); // Add a recorded time
