@@ -12,6 +12,9 @@ let redColor = '#e82e2e';
 
 document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' && !preparing && !running) {
+        var audio = new Audio('/src/sounds/start-sound.mp3'); // Load start audio file
+        audio.volume = 0.2;
+        audio.play();
         event.preventDefault();
         preparing = true;
         timerDisplay.style.color = redColor;
