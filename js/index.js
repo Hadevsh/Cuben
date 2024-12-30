@@ -99,7 +99,10 @@ window.addEventListener("click", (event) => {
 // Save time
 // Example data to collect
 let sessionData = {
-    times: [], // Array to store recorded times
+    times: [{
+        time: "00:00.00",
+        date: Date(), // Current date
+    }], // Array to store recorded times
     settings: {
         category: "3x3", // Default category
         saveTime: "manual",
@@ -114,8 +117,13 @@ let sessionData = {
 // Function to save current timer time
 function addTimeToSession() {
     time = document.getElementById("timer").innerHTML;
-    sessionData.times.push(time);
+    var time_data = {
+        "time": time,
+        "date": Date()
+    };
+    sessionData.times.push(time_data);
     console.log("Logged time to session", time);
+    console.log(sessionData.times);
 }
 
 // Function to update settings
