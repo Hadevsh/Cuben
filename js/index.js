@@ -1,4 +1,4 @@
-// Timer functionality
+// Timer functionality ------
 let timerDisplay = document.getElementById('timer');
 let timer;
 let startTime;
@@ -62,7 +62,7 @@ function pad(number) {
     return number.toString().padStart(2, '0');
 }
 
-// Settings menu
+// Settings menu ------
 // Get the modal element and settings button
 const modal = document.getElementById("settings-modal");
 const settingsBtn = document.getElementById("settings-btn");
@@ -77,15 +77,9 @@ function closeSettings() {
     modal.style.display = "none";
 }
 
-// Save settings (example functionality)
+// Save settings
 function saveSettings() {
-    const inspectionTime = document.getElementById("inspection-time").value;
-    const soundEnabled = document.getElementById("sound-toggle").checked;
-
-    console.log("Settings Saved:");
-    console.log("Inspection Time:", inspectionTime);
-    console.log("Sound Enabled:", soundEnabled);
-
+    updateSettings(); // Update settings and create a new session afterwards
     closeSettings(); // Close the modal after saving
 }
 
@@ -96,21 +90,18 @@ window.addEventListener("click", (event) => {
     }
 });
 
-// Save time
+// Save time ------
 // Example data to collect
 let sessionData = {
-    times: [{
-        time: "00:00.00",
-        date: new Date().toJSON(), // Current date
-    }], // Array to store recorded times
+    times: [], // Array to store recorded times
     settings: {
         category: "3x3", // Default category
         saveTime: "manual",
-        aon: null,
-        bon: null,
-        scrambles: false,
-        bw: true,
-        penalties: false
+        aon: "none",
+        bon: "none",
+        scrambles: "off",
+        bw: "on",
+        penalties: "off"
     }
 };
 
@@ -119,12 +110,14 @@ function addTimeToSession() {
     time = document.getElementById("timer").innerHTML;
     var time_data = {
         "time": time,
-        "date": new Date().toJSON()
+        "date": new Date().toJSON() // Current date in json format
     };
     sessionData.times.push(time_data);
     console.log("Logged time to session", time);
     console.log(sessionData.times);
 }
+
+// 1. on page load gather the last session settings and update them 
 
 // Function to update settings
 function updateSettings() {
@@ -132,19 +125,19 @@ function updateSettings() {
     const saveTime = document.getElementById("save-time").value;
     const aon = document.getElementById("average-n").value;
     const bon = document.getElementById("best-n").value;
-    const scramble = document.getElementById("scrambles-toggle").value;
+    const scrambles = document.getElementById("scrambles-toggle").value;
     const bw = document.getElementById("best-worst-toggle").value;
     const penalties = document.getElementById("penalties-toggle").value;
 
     // 1. save current session data to a file
     // 2. clear the session data json
-    // 3. create a new session data template with current settings (new sesion)
+    // 3. create a new session data template with current settings (new session)
 
     sessionData.settings.category = category;
     sessionData.settings.saveTime = saveTime;
     sessionData.settings.aon = aon;
     sessionData.settings.bon = bon;
-    sessionData.settings.scramble = scramble;
+    sessionData.settings.scrambles = scrambles;
     sessionData.settings.bw = bw;
     sessionData.settings.penalties = penalties;
 
@@ -164,6 +157,3 @@ function saveAsJSON() {
     a.click(); // Trigger download
     document.body.removeChild(a); // Clean up
 }
-
-// Example usage: Record a time
-// addTimeToSession("00:12.34"); // Add a recorded time
