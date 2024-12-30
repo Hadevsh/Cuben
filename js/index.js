@@ -101,7 +101,7 @@ window.addEventListener("click", (event) => {
 let sessionData = {
     times: [{
         time: "00:00.00",
-        date: Date(), // Current date
+        date: new Date().toJSON(), // Current date
     }], // Array to store recorded times
     settings: {
         category: "3x3", // Default category
@@ -119,7 +119,7 @@ function addTimeToSession() {
     time = document.getElementById("timer").innerHTML;
     var time_data = {
         "time": time,
-        "date": Date()
+        "date": new Date().toJSON()
     };
     sessionData.times.push(time_data);
     console.log("Logged time to session", time);
@@ -135,6 +135,10 @@ function updateSettings() {
     const scramble = document.getElementById("scrambles-toggle").value;
     const bw = document.getElementById("best-worst-toggle").value;
     const penalties = document.getElementById("penalties-toggle").value;
+
+    // 1. save current session data to a file
+    // 2. clear the session data json
+    // 3. create a new session data template with current settings (new sesion)
 
     sessionData.settings.category = category;
     sessionData.settings.saveTime = saveTime;
