@@ -30,6 +30,9 @@ document.addEventListener('keyup', function(event) {
     if (event.code === 'Space') {
         event.preventDefault();
         if (preparing && !running) {
+            var audio = new Audio('/src/sounds/start-cube.mp3'); // Load start timer run audio file
+            audio.volume = 0.2;
+            audio.play();
             clearTimeout(holdTimeout);
             if (timerDisplay.style.color === greenColor) {
                 startTimer();
