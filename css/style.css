@@ -126,3 +126,13 @@ button:hover {
     z-index: 2;
     display: block;
 }
+
+.sidenav h1 {
+    color: var(--text);
+    background: var(--nav-background);
+    margin: -35px 0 20px 20px;
+    padding: 0;
+    font-weight: 700;
+    text-decoration: underline var(--foreground) 2px;
+    text-underline-offset: 5px;
+}
