@@ -55,6 +55,9 @@ function startTimer() {
 }
 
 function stopTimer() {
+    var audio = new Audio('/src/sounds/end-cube.mp3'); // Load stop timer run audio file
+    audio.volume = 0.2;
+    audio.play();
     timerDisplay.style.textShadow = `0px 0px 10px ${whiteColor}`; // White glow
     clearInterval(timer);
     running = false;
