@@ -15,9 +15,11 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
         preparing = true;
         timerDisplay.style.color = redColor;
+        timerDisplay.style.textShadow = `0px 0px 10px ${redColor}`; // Red glow
         holdTimeout = setTimeout(() => {
             timerDisplay.style.color = greenColor;
-        }, 1000);
+            timerDisplay.style.textShadow = `0px 0px 10px ${greenColor}`; // Green glow
+        }, 1000); // 1 second
     }
 });
 
@@ -32,6 +34,7 @@ document.addEventListener('keyup', function(event) {
                 console.log('Preparation interrupted');
             }
             timerDisplay.style.color = whiteColor;
+            timerDisplay.style.textShadow = null; // Reset glow when timer is going
             preparing = false;
         } else if (running) {
             stopTimer();
@@ -46,6 +49,7 @@ function startTimer() {
 }
 
 function stopTimer() {
+    timerDisplay.style.textShadow = `0px 0px 10px ${whiteColor}`; // White glow
     clearInterval(timer);
     running = false;
 }
