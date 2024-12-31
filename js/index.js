@@ -92,6 +92,9 @@ function closeSettings() {
 
 // Save settings
 function saveSettings() {
+    var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
+    audio.volume = 0.2;
+    audio.play();
     updateSettings(); // Update settings and create a new session afterwards
     closeSettings(); // Close the modal after saving
 }
@@ -120,6 +123,9 @@ let sessionData = {
 
 // Function to save current timer time
 function addTimeToSession() {
+    var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
+    audio.volume = 0.2;
+    audio.play();
     time = document.getElementById("timer").innerHTML;
     var time_data = {
         "time": time,
