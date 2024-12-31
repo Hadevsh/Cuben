@@ -96,7 +96,7 @@ function saveSettings() {
     audio.volume = 0.2;
     audio.play();
     updateSettings(); // Update settings and create a new session afterwards
-    closeSettings(); // Close the modal after saving
+    // closeSettings(); // Close the modal after saving
 }
 
 // Close the modal when clicking outside of the modal content
