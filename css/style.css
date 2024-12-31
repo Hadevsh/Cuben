@@ -45,7 +45,7 @@ button:hover {
 
 .sidenav .opennav {
     color: var(--foreground);
-    background: var(--nav-background);
+    background-color: transparent;
     font-size: 30px;
     padding: 0;
     position: absolute;
@@ -67,26 +67,24 @@ button:hover {
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: var(--nav-background);
+    background: linear-gradient(to right, var(--nav-background), rgba(0, 0, 0, 0));
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-    box-shadow: 20px 0px 10px var(--nav-background);
 }
 
 .sidenav img, .sidenav .image {
     margin-left: 10px;
-    background: var(--nav-background);
+    background-color: transparent;
     width: 100px;
     margin-bottom: 20px;
 }
   
 .sidenav a {
-    background: var(--nav-background);
     padding: 8px 8px 8px 20px;
     text-decoration: none;
     font-size: 25px;
-    color: var(--foreground);
+    background-color: transparent;
     display: block;
     border-left: 0px solid rgba(255, 255, 255, 1);
     transition: color 0.3s, border 0.1s ease-out;
@@ -129,7 +127,7 @@ button:hover {
 
 .sidenav h1 {
     color: var(--text);
-    background: var(--nav-background);
+    background-color: transparent;
     margin: -35px 0 20px 20px;
     padding: 0;
     font-weight: 700;
