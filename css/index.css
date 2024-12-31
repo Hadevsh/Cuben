@@ -19,6 +19,7 @@
 }
 
 .instructions {
+    font-style: italic;
     font-size: 1.2em;
     color: var(--darker-foreground);
 }

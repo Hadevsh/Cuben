@@ -106,6 +106,9 @@ window.addEventListener("click", (event) => {
     }
 });
 
+
+// 1. Add an idicator on settings change (to save)
+
 // Save time ------
 // Example data to collect
 let sessionData = {
@@ -137,7 +140,6 @@ function addTimeToSession() {
 }
 
 // 1. on page load gather the last session settings and update them 
-
 // Function to update settings
 function updateSettings() {
     const category = document.getElementById("category").value;
