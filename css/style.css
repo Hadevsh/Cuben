@@ -35,7 +35,7 @@ button:hover {
     color: var(--foreground);
     font-size: 30px;
     margin-left: 10px;
-    transition: color 0.5s;
+    transition: color 0.5s, opacity 0.5s;
 }
 
 .opennav:hover {

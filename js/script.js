@@ -2,14 +2,14 @@
 function openNav() {
     document.getElementById("sidenav").style.width = "200px";
     document.getElementById("main").style.marginLeft = "150px";
-    document.getElementById("opennav").style.display = "none";
+    document.getElementById("opennav").style.opacity = "0%";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
 function closeNav() {
     document.getElementById("sidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-    document.getElementById("opennav").style.display = "block";
+    document.getElementById("opennav").style.opacity = "100%";
 }
 
 const imageContainer = document.querySelector('.image');
