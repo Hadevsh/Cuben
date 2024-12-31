@@ -10,13 +10,17 @@
 #timer {
     color: var(--text);
     font-size: 7em;
-    margin-bottom: 20px;
     transition: 0.3s;
+}
+
+#category-display {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 .instructions {
     font-size: 1.2em;
-    color: var(--foreground);
+    color: var(--darker-foreground);
 }
 
 #settings-btn {

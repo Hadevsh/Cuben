@@ -6,6 +6,7 @@
     --darker-background: #0f0f0f;
     --text: #fff;
     --foreground: #bbbbbb;
+    --darker-foreground: #797979;
 }
 
 * {

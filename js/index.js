@@ -148,6 +148,8 @@ function updateSettings() {
     const bw = document.getElementById("best-worst-toggle").value;
     const penalties = document.getElementById("penalties-toggle").value;
 
+    // Only when saving using a button:
+    // (to avoid making a new session every time on page relaod)
     // 1. save current session data to a file
     // 2. clear the session data json
     // 3. create a new session data template with current settings (new session)
@@ -159,6 +161,9 @@ function updateSettings() {
     sessionData.settings.scrambles = scrambles;
     sessionData.settings.bw = bw;
     sessionData.settings.penalties = penalties;
+
+    // Update category display
+    document.getElementById("category-display").innerHTML = `${category}`;
 
     console.log("Settings Updated:", sessionData.settings);
 }
@@ -176,3 +181,6 @@ function saveAsJSON() {
     a.click(); // Trigger download
     document.body.removeChild(a); // Clean up
 }
+
+// Update settings on page load/refresh
+updateSettings();
