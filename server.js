@@ -2,8 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-
 app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 
 const settingsPath = path.join(__dirname, 'data', 'settings.json');
 const timesPath = path.join(__dirname, 'data', 'times.json');
@@ -57,5 +58,5 @@ app.post('/times', (req, res) => {
     res.sendStatus(200);
 });
 
-const PORT = 5500;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

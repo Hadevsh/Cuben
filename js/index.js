@@ -92,12 +92,43 @@ function closeSettings() {
 
 // Save settings
 function saveSettings() {
-    var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
-    audio.volume = 0.2;
-    audio.play();
-    updateSettings(); // Update settings and create a new session afterwards
-    // closeSettings(); // Close the modal after saving
+    const settings = {
+        category: document.getElementById("category").value,
+        saveTime: document.getElementById("save-time").value,
+        averageN: document.getElementById("average-n").value,
+        bestN: document.getElementById("best-n").value,
+        scrambles: document.getElementById("scrambles-toggle").checked ? "on" : "off",
+        bestWorst: document.getElementById("best-worst-toggle").checked ? "on" : "off",
+        penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
+    };
+
+    fetch('http://localhost:3000/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings),
+    }).then(() => {
+        console.log('Settings saved successfully');
+
+        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
+        audio.volume = 0.2;
+        audio.play();
+    });
 }
+
+// Load settings on page load
+window.onload = function () {
+    fetch('http://localhost:3000/settings')
+        .then(response => response.json())
+        .then(settings => {
+            document.getElementById("category").value = settings.category || "3x3";
+            document.getElementById("save-time").value = settings.saveTime || "manual";
+            document.getElementById("average-n").value = settings.aon || "none";
+            document.getElementById("best-n").value = settings.bon || "none";
+            document.getElementById("scrambles-toggle").checked = settings.scrambles === "on";
+            document.getElementById("best-worst-toggle").checked = settings.bw === "on";
+            document.getElementById("penalties-toggle").checked = settings.penalties === "on";
+        });
+};
 
 // Close the modal when clicking outside of the modal content
 window.addEventListener("click", (event) => {
@@ -107,82 +138,25 @@ window.addEventListener("click", (event) => {
 });
 
 
-// 1. Add an idicator on settings change (to save)
-
-// Save time ------
-// Example data to collect
-let sessionData = {
-    times: [], // Array to store recorded times
-    settings: {
-        category: "3x3", // Default category
-        saveTime: "manual",
-        aon: "none",
-        bon: "none",
-        scrambles: "off",
-        bw: "on",
-        penalties: "off"
-    }
-};
+// 1. Add an indicator on settings change (to save)
 
 // Function to save current timer time
 function addTimeToSession() {
-    var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
-    audio.volume = 0.2;
-    audio.play();
-    time = document.getElementById("timer").innerHTML;
-    var time_data = {
-        "time": time,
-        "date": new Date().toJSON() // Current date in json format
-    };
-    sessionData.times.push(time_data);
-    console.log("Logged time to session", time);
-    console.log(sessionData.times);
-}
-
-// 1. on page load gather the last session settings and update them 
-// Function to update settings
-function updateSettings() {
+    const time = document.getElementById("timer").innerHTML;
+    const date = new Date().toJSON();
     const category = document.getElementById("category").value;
-    const saveTime = document.getElementById("save-time").value;
-    const aon = document.getElementById("average-n").value;
-    const bon = document.getElementById("best-n").value;
-    const scrambles = document.getElementById("scrambles-toggle").value;
-    const bw = document.getElementById("best-worst-toggle").value;
-    const penalties = document.getElementById("penalties-toggle").value;
 
-    // Only when saving using a button:
-    // (to avoid making a new session every time on page relaod)
-    // 1. save current session data to a file
-    // 2. clear the session data json
-    // 3. create a new session data template with current settings (new session)
+    fetch('http://localhost:3000/times', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ category, time, date }),
+    }).then(() => {
+        console.log('Time saved successfully');
 
-    sessionData.settings.category = category;
-    sessionData.settings.saveTime = saveTime;
-    sessionData.settings.aon = aon;
-    sessionData.settings.bon = bon;
-    sessionData.settings.scrambles = scrambles;
-    sessionData.settings.bw = bw;
-    sessionData.settings.penalties = penalties;
-
-    // Update category display
-    document.getElementById("category-display").innerHTML = `${category}`;
-
-    console.log("Settings Updated:", sessionData.settings);
+        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
+        audio.volume = 0.2;
+        audio.play();
+    }).catch(error => {
+        console.error('Error saving time:', error);
+    });
 }
-
-// Function to save session data as JSON
-function saveAsJSON() {
-    const dataStr = JSON.stringify(sessionData, null, 4); // Convert object to JSON string
-    const blob = new Blob([dataStr], { type: "application/json" }); // Create a JSON file
-    const url = URL.createObjectURL(blob); // Generate download link
-
-    const a = document.createElement("a"); // Create an anchor element
-    a.href = url;
-    a.download = "sessionData.json"; // Set the file name
-    document.body.appendChild(a);
-    a.click(); // Trigger download
-    document.body.removeChild(a); // Clean up
-}
-
-// Update settings on page load/refresh
-updateSettings();
