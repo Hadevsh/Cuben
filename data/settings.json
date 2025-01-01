@@ -4,6 +4,6 @@
     "averageN": "none",
     "bestN": "none",
     "scrambles": "off",
-    "bestWorst": "on",
+    "bestWorst": "off",
     "penalties": "off"
 }
