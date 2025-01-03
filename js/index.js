@@ -102,6 +102,8 @@ function saveSettings() {
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
     };
 
+    document.getElementById("category-display").innerText = settings.category;
+
     fetch('http://localhost:3000/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -127,6 +129,8 @@ window.onload = function () {
             document.getElementById("scrambles-toggle").checked = settings.scrambles === "on";
             document.getElementById("best-worst-toggle").checked = settings.bw === "on";
             document.getElementById("penalties-toggle").checked = settings.penalties === "on";
+
+            document.getElementById("category-display").innerText = settings.category || "3x3";
         });
 };
 
