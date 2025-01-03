@@ -104,6 +104,7 @@ function saveSettings() {
 
     // Update what to show
     document.getElementById("category-display").innerText = settings.category;
+    findBestTime(settings.category);
 
     fetch('http://localhost:3000/settings', {
         method: 'POST',
