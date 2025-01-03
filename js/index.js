@@ -105,6 +105,7 @@ function saveSettings() {
     // Update what to show
     document.getElementById("category-display").innerText = settings.category;
     findBestTime(settings.category);
+    findWorstTime(settings.category);
 
     fetch('http://localhost:3000/settings', {
         method: 'POST',
@@ -135,6 +136,7 @@ window.onload = function () {
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
             findBestTime(settings.category || "3x3");
+            findWorstTime(settings.category || "3x3");
         });
 };
 
@@ -171,7 +173,8 @@ function addTimeToSession() {
     .then(response => response.json())
     .then(settings => {
         // Update what to show
-        findBestTime(settings.category || "3x3");
+        findBestTime(settings.category);
+        findWorstTime(settings.category);
     });
 }
 
@@ -207,6 +210,34 @@ function findBestTime(category, timespan=null) {
                 
             }
     }).catch(error => {
-        console.error('Error saving time:', error);
+        console.error('Error finding best time:', error);
+    });
+}
+
+function findWorstTime(category, timespan=null) {
+    fetch('http://localhost:3000/times')
+        .then(response => response.json())
+        .then(times => {
+            const data = times[category];
+
+            let worstTime = null;
+            let bestEntry = null;
+            if (timespan === null) { // Get best time from whole data
+                data.forEach(entry => {
+                    if (entry.time !== "00:00.00") { // Ignore invalid times
+                        const timeInSeconds = parseTimeToSeconds(entry.time);
+                        if (worstTime === null || timeInSeconds > worstTime) {
+                            worstTime = timeInSeconds;
+                            bestEntry = entry;
+                        }
+                    }
+                });
+                document.getElementById("worst-time").innerText = `Worst: ${bestEntry["time"]}`;
+                return bestEntry
+            } else {
+                
+            }
+    }).catch(error => {
+        console.error('Error finding worst time:', error);
     });
 }

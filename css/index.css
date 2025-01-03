@@ -15,10 +15,10 @@
 
 #category-display {
     font-size: 2em;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
-#best-time {
+#worst-time {
     margin-bottom: 10px;
 }
 
