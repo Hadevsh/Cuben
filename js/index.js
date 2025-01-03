@@ -102,6 +102,7 @@ function saveSettings() {
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
     };
 
+    // Update what to show
     document.getElementById("category-display").innerText = settings.category;
 
     fetch('http://localhost:3000/settings', {
@@ -130,7 +131,9 @@ window.onload = function () {
             document.getElementById("best-worst-toggle").checked = settings.bw === "on";
             document.getElementById("penalties-toggle").checked = settings.penalties === "on";
 
+            // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
+            findBestTime(settings.category || "3x3");
         });
 };
 
@@ -140,7 +143,6 @@ window.addEventListener("click", (event) => {
         closeSettings();
     }
 });
-
 
 // 1. Add an indicator on settings change (to save)
 
@@ -160,6 +162,49 @@ function addTimeToSession() {
         var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
         audio.volume = 0.2;
         audio.play();
+    }).catch(error => {
+        console.error('Error saving time:', error);
+    });
+
+    fetch('http://localhost:3000/settings')
+    .then(response => response.json())
+    .then(settings => {
+        // Update what to show
+        findBestTime(settings.category || "3x3");
+    });
+}
+
+// Times data utils
+function parseTimeToSeconds(timeStr) {
+    // Convert "00:01.28" or "00:00.00" format to seconds
+    const [minutes, rest] = timeStr.split(':');
+    const [seconds, milliseconds] = rest.split('.');
+    return parseInt(minutes, 10) * 60 + parseInt(seconds, 10) + parseInt(milliseconds, 10) / 100;
+}
+
+function findBestTime(category, timespan=null) {
+    fetch('http://localhost:3000/times')
+        .then(response => response.json())
+        .then(times => {
+            const data = times[category];
+
+            let bestTime = null;
+            let bestEntry = null;
+            if (timespan === null) { // Get best time from whole data
+                data.forEach(entry => {
+                    if (entry.time !== "00:00.00") { // Ignore invalid times
+                        const timeInSeconds = parseTimeToSeconds(entry.time);
+                        if (bestTime === null || timeInSeconds < bestTime) {
+                            bestTime = timeInSeconds;
+                            bestEntry = entry;
+                        }
+                    }
+                });
+                document.getElementById("best-time").innerText = `Best: ${bestEntry["time"]}`;
+                return bestEntry
+            } else {
+                
+            }
     }).catch(error => {
         console.error('Error saving time:', error);
     });

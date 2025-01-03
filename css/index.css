@@ -15,7 +15,11 @@
 
 #category-display {
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+}
+
+#best-time {
+    margin-bottom: 10px;
 }
 
 .instructions {
