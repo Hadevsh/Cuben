@@ -1,67 +1,111 @@
-// Sample data
-const data = {
-    "3x3": [
-        { "time": "00:03.94", "date": "2025-01-03T14:36:26.381Z" },
-        { "time": "00:04.64", "date": "2025-01-03T14:38:38.821Z" },
-        { "time": "00:06.00", "date": "2025-01-03T14:38:41.565Z" },
-        { "time": "00:02.40", "date": "2025-01-03T14:38:53.740Z" },
-        { "time": "00:06.00", "date": "2025-01-03T14:38:44.759Z" },
-        { "time": "00:02.40", "date": "2025-01-03T14:38:54.360Z" }
-    ]
-};
+let chart; // Holds the Chart.js instance
 
-// Parse time strings to seconds
-function timeToSeconds(time) {
-    const [minutes, seconds] = time.split(":").map(Number);
-    return minutes * 60 + seconds;
+// Function to fetch the data
+async function fetchData() {
+    const response = await fetch('data/times.json');
+    return await response.json();
 }
 
-// Prepare chart data
-function prepareChartData(n) {
-    const times = data["3x3"].slice(-n).map(entry => timeToSeconds(entry.time));
-    const labels = data["3x3"]
-        .slice(-n)
-        .map((_, index) => `Run ${index + 1}`);
-    return { times, labels };
+// Initialize the page
+async function init() {
+    const data = await fetchData();
+
+    // Populate the category dropdown
+    const categorySelect = document.getElementById('category');
+    for (const category in data) {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
+    }
+
+    // Initialize the chart with default values
+    updateChart();
 }
 
-// Initialize chart
-let chart;
-function createChart(labels, times) {
-    const ctx = document.getElementById("timesChart").getContext("2d");
-    if (chart) chart.destroy();
+// Parse time in "00:00.00" format to milliseconds
+function parseTimeToMilliseconds(time) {
+    const [minutes, seconds] = time.split(':');
+    const [sec, millis] = seconds.split('.');
+    return parseInt(minutes) * 60000 + parseInt(sec) * 1000 + parseInt(millis) * 10;
+}
+
+// Format milliseconds back to "00:00.00"
+function formatMilliseconds(milliseconds) {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.floor((milliseconds % 60000) / 1000);
+    const millis = Math.floor((milliseconds % 1000) / 10);
+    return `${minutes.toString().padStart(2, '0')}:${seconds
+        .toString()
+        .padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
+}
+
+// Update the chart
+async function updateChart() {
+    const data = await fetchData();
+    const category = document.getElementById('category').value;
+    const numberOfRuns = parseInt(document.getElementById('numberOfRuns').value);
+
+    if (!data[category] || data[category].length === 0) {
+        alert('No data available for this category.');
+        return;
+    }
+
+    const times = data[category]
+        .slice(-numberOfRuns)
+        .map((entry) => ({
+            time: parseTimeToMilliseconds(entry.time),
+            date: new Date(entry.date).toLocaleString(),
+        }));
+
+    const labels = times.map((_, index) => `Run ${index + 1}`);
+    const chartData = times.map((entry) => entry.time);
+
+    if (chart) {
+        chart.destroy();
+    }
+
+    const ctx = document.getElementById('statsChart').getContext('2d');
     chart = new Chart(ctx, {
-        type: "line",
+        type: 'line',
         data: {
-            labels,
+            labels: labels,
             datasets: [
                 {
-                    label: "Solve Times (seconds)",
-                    data: times,
-                    borderColor: "#007bff",
-                    backgroundColor: "rgba(0, 123, 255, 0.2)",
-                    borderWidth: 2
-                }
-            ]
+                    label: 'Times (ms)',
+                    data: chartData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                },
+            ],
         },
         options: {
             responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const time = formatMilliseconds(context.raw);
+                            const date = times[context.dataIndex].date;
+                            return `Time: ${time}, Date: ${date}`;
+                        },
+                    },
+                },
+            },
             scales: {
                 y: {
-                    beginAtZero: true
-                }
-            }
-        }
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return formatMilliseconds(value);
+                        },
+                    },
+                },
+            },
+        },
     });
 }
 
-// Update chart on button click
-document.getElementById("update-chart").addEventListener("click", () => {
-    const n = parseInt(document.getElementById("n-runs").value, 10) || 10;
-    const { labels, times } = prepareChartData(n);
-    createChart(labels, times);
-});
-
-// Initial chart render
-const { labels, times } = prepareChartData(10);
-createChart(labels, times);
+// Initialize the app
+window.onload = init;
