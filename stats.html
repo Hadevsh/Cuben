@@ -6,8 +6,10 @@
     <title>Cuben</title>
     <link rel="icon" type="image/x-icon" href="/src/images/logo.ico">
     <link rel="stylesheet" href="css/style.css"> <!-- Defautl styling -->
+    <link rel="stylesheet" href="css/stats.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="sidenav" class="sidenav">
@@ -23,8 +25,16 @@
     <span class="opennav" id="opennav" onclick="openNav()">&#8614;</span>
 
     <div id="main">
+        <h2>Cube Stats</h2>
+        <div class="controls">
+            <label for="n-runs">Show last N runs:</label>
+            <input type="number" id="n-runs" min="1" value="10">
+            <button id="update-chart">Update Chart</button>
+        </div>
+        <canvas id="timesChart"></canvas>
     </div>
 
     <script src="js/script.js"></script> <!-- Default script -->
+    <script src="js/stats.js"></script>
 </body>
 </html>
