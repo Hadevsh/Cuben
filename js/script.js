@@ -21,3 +21,4 @@ imageContainer.addEventListener('mousemove', (e) => {
     hoverText.style.left = `${x}px`;
     hoverText.style.top = `${y + 15}px`;
 });
+openNav();
