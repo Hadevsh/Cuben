@@ -88,6 +88,7 @@ async function updateChart() {
             ],
         },
         options: {
+            tension: 0.4,
             responsive: true,
             plugins: {
                 tooltip: {
