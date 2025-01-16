@@ -19,6 +19,10 @@ async function init() {
         categorySelect.appendChild(option);
     }
 
+    // Add event listeners for auto-updating the chart
+    document.getElementById('category').addEventListener('change', updateChart);
+    document.getElementById('numberOfRuns').addEventListener('change', updateChart);
+
     // Initialize the chart with default values
     updateChart();
 }
@@ -44,19 +48,22 @@ function formatMilliseconds(milliseconds) {
 async function updateChart() {
     const data = await fetchData();
     const category = document.getElementById('category').value;
-    const numberOfRuns = parseInt(document.getElementById('numberOfRuns').value);
+    const numberOfRuns = document.getElementById('numberOfRuns').value;
 
     if (!data[category] || data[category].length === 0) {
         alert('No data available for this category.');
         return;
     }
 
-    const times = data[category]
-        .slice(-numberOfRuns)
-        .map((entry) => ({
-            time: parseTimeToMilliseconds(entry.time),
-            date: new Date(entry.date).toLocaleString(),
-        }));
+    let times = data[category].map((entry) => ({
+        time: parseTimeToMilliseconds(entry.time),
+        date: new Date(entry.date).toLocaleString(),
+    }));
+
+    // Handle "all" case or limit runs
+    if (numberOfRuns !== 'all') {
+        times = times.slice(-parseInt(numberOfRuns));
+    }
 
     const labels = times.map((_, index) => `Run ${index + 1}`);
     const chartData = times.map((entry) => entry.time);
