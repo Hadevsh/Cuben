@@ -30,7 +30,7 @@
 }
 
 .time-card .time-info small {
-    color: #666;
+    color: var(--darker-foreground);
 }
 
 .time-card .actions {
@@ -41,18 +41,18 @@
 .time-card .actions i {
     cursor: pointer;
     font-size: 18px;
-    color: #333;
+    color: var(--darker-foreground);
     transition: color 0.3s;
 }
 
 .time-card .actions i:hover {
-    color: #007BFF;
+    color: var(--foreground);
 }
 
 .time-card .actions .delete {
-    color: #e63946;
+    color: #f73838;
 }
 
 .time-card .actions .delete:hover {
-    color: #ff0000;
+    color: #c22222;
 }
