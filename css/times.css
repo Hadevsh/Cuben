@@ -1,0 +1,59 @@
+.times-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.time-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.time-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.time-card .time-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-card .time-info span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.time-card .time-info small {
+    color: #666;
+}
+
+.time-card .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.time-card .actions i {
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.time-card .actions i:hover {
+    color: #007BFF;
+}
+
+.time-card .actions .delete {
+    color: #e63946;
+}
+
+.time-card .actions .delete:hover {
+    color: #ff0000;
+}
