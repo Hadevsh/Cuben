@@ -50,7 +50,7 @@ function loadTimes(data) {
                 <small>Date: ${entry.date}</small>
             </div>
             <div class="actions">
-                <i class="fa fa-pen edit" data-index="${index}"></i>
+                <i class="fa fa-pencil edit" data-index="${index}"></i>
                 <i class="fa fa-trash delete" data-index="${index}"></i>
             </div>
         `;
