@@ -23,6 +23,7 @@ async function populateCategories() {
     }
 
     categorySelect.addEventListener("change", () => loadTimes(data));
+    loadTimes(data);
 }
 
 // Load times for the selected category
