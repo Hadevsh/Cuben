@@ -10,14 +10,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.3s;
 }
 
 .time-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 .time-card .time-info {
