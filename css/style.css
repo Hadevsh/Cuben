@@ -56,6 +56,17 @@ button:active:after {
     transition: 0s;
 }
 
+select {
+    outline: none;
+    border-radius: 5px;
+    padding: 2px;
+    transition: border .3s;
+}
+
+select:focus {
+    border: 1px solid var(--foreground);
+}
+
 /* The side navigation menu */
 .opennav {
     color: var(--foreground);
