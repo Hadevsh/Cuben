@@ -102,10 +102,6 @@ function saveSettings() {
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
     };
 
-    // Update what to show
-    document.getElementById("category-display").innerText = settings.category;
-    findBWTimes(); // Best/Worst
-
     fetch('http://localhost:3000/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -117,26 +113,31 @@ function saveSettings() {
         audio.volume = 0.2;
         audio.play();
     });
+
+    // Update what to show
+    document.getElementById("category-display").innerText = settings.category;
+    findBWTimes(); // Best/Worst
+    updateSettigsDisplay();
 }
 
-// Load settings on page load
-window.onload = function () {
+function updateSettigsDisplay() {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
             document.getElementById("category").value = settings.category || "3x3";
             document.getElementById("save-time").value = settings.saveTime || "manual";
-            document.getElementById("average-n").value = settings.aon || "none";
-            document.getElementById("best-n").value = settings.bon || "none";
+            document.getElementById("average-n").value = settings.averageN || "none";
+            document.getElementById("best-n").value = settings.bestN || "none";
             document.getElementById("scrambles-toggle").checked = settings.scrambles === "on";
-            document.getElementById("best-worst-toggle").checked = settings.bw === "on";
+            document.getElementById("best-worst-toggle").checked = settings.bestWorst === "on";
             document.getElementById("penalties-toggle").checked = settings.penalties === "on";
 
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
-           findBWTimes();
+            findBWTimes();
         });
-};
+}
+updateSettigsDisplay();
 
 // Close the modal when clicking outside of the modal content
 window.addEventListener("click", (event) => {
@@ -167,13 +168,6 @@ function addTimeToSession() {
         console.error('Error saving time:', error);
     });
 
-    // fetch('http://localhost:3000/settings')
-    // .then(response => response.json())
-    // .then(settings => {
-    //     // Update what to show
-    //     findBestTime(settings.category);
-    //     findWorstTime(settings.category);
-    // });
     findBWTimes(); // Find best/worst times and display them
 }
 
@@ -189,45 +183,51 @@ function findBWTimes(timespan=null) {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
-            const category = settings.category;
-            fetch('http://localhost:3000/times')
-               .then(response => response.json())
-               .then(times => {
-                const data = times[category];
+            if (settings.bestWorst === "on") { // Only show best/worst when in settings
+                const category = settings.category;
+                fetch('http://localhost:3000/times')
+                .then(response => response.json())
+                .then(times => {
+                    const data = times[category];
 
-                let bestTime = null;
-                let bestEntry = null;
-                if (timespan === null) { // Get best time from whole data
-                    data.forEach(entry => {
-                        if (entry.time !== "00:00.00") { // Ignore invalid times
-                            const timeInSeconds = parseTimeToSeconds(entry.time);
-                            if (bestTime === null || timeInSeconds < bestTime) {
-                                bestTime = timeInSeconds;
-                                bestEntry = entry;
+                    let bestTime = null;
+                    let bestEntry = null;
+                    if (timespan === null) { // Get best time from whole data
+                        data.forEach(entry => {
+                            if (entry.time !== "00:00.00") { // Ignore invalid times
+                                const timeInSeconds = parseTimeToSeconds(entry.time);
+                                if (bestTime === null || timeInSeconds < bestTime) {
+                                    bestTime = timeInSeconds;
+                                    bestEntry = entry;
+                                }
                             }
-                        }
-                    });
-                    document.getElementById("best-time").innerText = `Best: ${bestEntry["time"]}`;
-                    // return bestEntry
-                } else {}
+                        });
+                        document.getElementById("best-time").innerText = `Best: ${bestEntry["time"]}`;
+                        // return bestEntry
+                    } else {}
 
-                let worstTime = null;
-                bestEntry = null;
-                if (timespan === null) { // Get best time from whole data
-                    data.forEach(entry => {
-                        if (entry.time !== "00:00.00") { // Ignore invalid times
-                            const timeInSeconds = parseTimeToSeconds(entry.time);
-                            if (worstTime === null || timeInSeconds > worstTime) {
-                                worstTime = timeInSeconds;
-                                bestEntry = entry;
+                    let worstTime = null;
+                    bestEntry = null;
+                    if (timespan === null) { // Get best time from whole data
+                        data.forEach(entry => {
+                            if (entry.time !== "00:00.00") { // Ignore invalid times
+                                const timeInSeconds = parseTimeToSeconds(entry.time);
+                                if (worstTime === null || timeInSeconds > worstTime) {
+                                    worstTime = timeInSeconds;
+                                    bestEntry = entry;
+                                }
                             }
-                        }
-                    });
-                    document.getElementById("worst-time").innerText = `Worst: ${bestEntry["time"]}`;
-                    // return bestEntry
-                } else {}
-            }).catch(error => {
-                console.error('Error finding best/worst time:', error);
-        });
+                        });
+                        document.getElementById("worst-time").innerText = `Worst: ${bestEntry["time"]}`;
+                        // return bestEntry
+                    } else {}
+                }).catch(error => {
+                    console.error('Error finding best/worst time:', error);
+            });
+        } if (settings.bestWorst === "off") { // If best/worst settings is off
+            // Clear the paragraphs
+            document.getElementById("best-time").innerText = ``;
+            document.getElementById("worst-time").innerText = ``;
+        }
     })
 }
