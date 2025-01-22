@@ -104,8 +104,7 @@ function saveSettings() {
 
     // Update what to show
     document.getElementById("category-display").innerText = settings.category;
-    findBestTime(settings.category);
-    findWorstTime(settings.category);
+    findBWTimes(); // Best/Worst
 
     fetch('http://localhost:3000/settings', {
         method: 'POST',
@@ -135,8 +134,7 @@ window.onload = function () {
 
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
-            findBestTime(settings.category || "3x3");
-            findWorstTime(settings.category || "3x3");
+           findBWTimes();
         });
 };
 
@@ -169,13 +167,14 @@ function addTimeToSession() {
         console.error('Error saving time:', error);
     });
 
-    fetch('http://localhost:3000/settings')
-    .then(response => response.json())
-    .then(settings => {
-        // Update what to show
-        findBestTime(settings.category);
-        findWorstTime(settings.category);
-    });
+    // fetch('http://localhost:3000/settings')
+    // .then(response => response.json())
+    // .then(settings => {
+    //     // Update what to show
+    //     findBestTime(settings.category);
+    //     findWorstTime(settings.category);
+    // });
+    findBWTimes(); // Find best/worst times and display them
 }
 
 // Times data utils
@@ -186,58 +185,49 @@ function parseTimeToSeconds(timeStr) {
     return parseInt(minutes, 10) * 60 + parseInt(seconds, 10) + parseInt(milliseconds, 10) / 100;
 }
 
-function findBestTime(category, timespan=null) {
-    fetch('http://localhost:3000/times')
+function findBWTimes(timespan=null) {
+    fetch('http://localhost:3000/settings')
         .then(response => response.json())
-        .then(times => {
-            const data = times[category];
+        .then(settings => {
+            const category = settings.category;
+            fetch('http://localhost:3000/times')
+               .then(response => response.json())
+               .then(times => {
+                const data = times[category];
 
-            let bestTime = null;
-            let bestEntry = null;
-            if (timespan === null) { // Get best time from whole data
-                data.forEach(entry => {
-                    if (entry.time !== "00:00.00") { // Ignore invalid times
-                        const timeInSeconds = parseTimeToSeconds(entry.time);
-                        if (bestTime === null || timeInSeconds < bestTime) {
-                            bestTime = timeInSeconds;
-                            bestEntry = entry;
+                let bestTime = null;
+                let bestEntry = null;
+                if (timespan === null) { // Get best time from whole data
+                    data.forEach(entry => {
+                        if (entry.time !== "00:00.00") { // Ignore invalid times
+                            const timeInSeconds = parseTimeToSeconds(entry.time);
+                            if (bestTime === null || timeInSeconds < bestTime) {
+                                bestTime = timeInSeconds;
+                                bestEntry = entry;
+                            }
                         }
-                    }
-                });
-                document.getElementById("best-time").innerText = `Best: ${bestEntry["time"]}`;
-                return bestEntry
-            } else {
-                
-            }
-    }).catch(error => {
-        console.error('Error finding best time:', error);
-    });
-}
+                    });
+                    document.getElementById("best-time").innerText = `Best: ${bestEntry["time"]}`;
+                    // return bestEntry
+                } else {}
 
-function findWorstTime(category, timespan=null) {
-    fetch('http://localhost:3000/times')
-        .then(response => response.json())
-        .then(times => {
-            const data = times[category];
-
-            let worstTime = null;
-            let bestEntry = null;
-            if (timespan === null) { // Get best time from whole data
-                data.forEach(entry => {
-                    if (entry.time !== "00:00.00") { // Ignore invalid times
-                        const timeInSeconds = parseTimeToSeconds(entry.time);
-                        if (worstTime === null || timeInSeconds > worstTime) {
-                            worstTime = timeInSeconds;
-                            bestEntry = entry;
+                let worstTime = null;
+                bestEntry = null;
+                if (timespan === null) { // Get best time from whole data
+                    data.forEach(entry => {
+                        if (entry.time !== "00:00.00") { // Ignore invalid times
+                            const timeInSeconds = parseTimeToSeconds(entry.time);
+                            if (worstTime === null || timeInSeconds > worstTime) {
+                                worstTime = timeInSeconds;
+                                bestEntry = entry;
+                            }
                         }
-                    }
-                });
-                document.getElementById("worst-time").innerText = `Worst: ${bestEntry["time"]}`;
-                return bestEntry
-            } else {
-                
-            }
-    }).catch(error => {
-        console.error('Error finding worst time:', error);
-    });
+                    });
+                    document.getElementById("worst-time").innerText = `Worst: ${bestEntry["time"]}`;
+                    // return bestEntry
+                } else {}
+            }).catch(error => {
+                console.error('Error finding best/worst time:', error);
+        });
+    })
 }
