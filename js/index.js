@@ -223,6 +223,8 @@ function findBWTimes(timespan=null) {
                     } else {}
                 }).catch(error => {
                     console.error('Error finding best/worst time:', error);
+                    document.getElementById("best-time").innerText = `Best: N\\A`;
+                    document.getElementById("worst-time").innerText = `Worst: N\\A`;
             });
         } if (settings.bestWorst === "off") { // If best/worst settings is off
             // Clear the paragraphs
