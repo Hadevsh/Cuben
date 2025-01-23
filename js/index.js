@@ -181,6 +181,8 @@ function saveSettings() {
     document.getElementById("category-display").innerText = settings.category;
     findBWTimes(); // Best/Worst
     updateSettigsDisplay();
+
+    showUnsaved();
 }
 
 function updateSettigsDisplay() {
@@ -194,6 +196,7 @@ function updateSettigsDisplay() {
             document.getElementById("scrambles-toggle").checked = settings.scrambles === "on";
             document.getElementById("best-worst-toggle").checked = settings.bestWorst === "on";
             document.getElementById("penalties-toggle").checked = settings.penalties === "on";
+            document.getElementById("sound-toggle").checked = settings.sound === "on";
 
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
