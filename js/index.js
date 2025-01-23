@@ -130,7 +130,6 @@ function showUnsaved() {
         .then(response => response.json())
         .then(savedSettings => {
             for (const key in settings) {
-                console.log(key.id);
                 const unsavedIndicator = document.getElementById(`unsaved-${key}`);
                 if (settings[key] !== savedSettings[key]) {
                     unsavedIndicator.style.display = "inline";
