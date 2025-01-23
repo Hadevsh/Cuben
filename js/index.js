@@ -1,4 +1,4 @@
-// Timer functionality ------
+// ----------------------------------------------------- Timer -----------------------------------------------------
 let timerDisplay = document.getElementById('timer');
 let timer;
 let startTime;
@@ -75,7 +75,30 @@ function pad(number) {
     return number.toString().padStart(2, '0');
 }
 
-// Settings menu ------
+// Function to save current timer time
+function addTimeToSession() {
+    const time = document.getElementById("timer").innerHTML;
+    const date = new Date().toJSON();
+    const category = document.getElementById("category").value;
+
+    fetch('http://localhost:3000/times', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ category, time, date }),
+    }).then(() => {
+        console.log('Time saved successfully');
+
+        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
+        audio.volume = 0.2;
+        audio.play();
+    }).catch(error => {
+        console.error('Error saving time:', error);
+    });
+
+    findBWTimes(); // Find best/worst times and display them
+}
+
+// ----------------------------------------------------- Settings -----------------------------------------------------
 // Get the modal element and settings button
 const modal = document.getElementById("settings-modal");
 const settingsBtn = document.getElementById("settings-btn");
@@ -148,29 +171,7 @@ window.addEventListener("click", (event) => {
 
 // 1. Add an indicator on settings change (to save)
 
-// Function to save current timer time
-function addTimeToSession() {
-    const time = document.getElementById("timer").innerHTML;
-    const date = new Date().toJSON();
-    const category = document.getElementById("category").value;
-
-    fetch('http://localhost:3000/times', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ category, time, date }),
-    }).then(() => {
-        console.log('Time saved successfully');
-
-        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
-        audio.volume = 0.2;
-        audio.play();
-    }).catch(error => {
-        console.error('Error saving time:', error);
-    });
-
-    findBWTimes(); // Find best/worst times and display them
-}
-
+// ----------------------------------------------------- Utils -----------------------------------------------------
 // Times data utils
 function parseTimeToSeconds(timeStr) {
     // Convert "00:01.28" or "00:00.00" format to seconds
@@ -179,6 +180,7 @@ function parseTimeToSeconds(timeStr) {
     return parseInt(minutes, 10) * 60 + parseInt(seconds, 10) + parseInt(milliseconds, 10) / 100;
 }
 
+// ----------------------------------------------------- To Show -----------------------------------------------------
 function findBWTimes(timespan=null) {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
