@@ -67,6 +67,12 @@ select:focus {
     border: 1px solid var(--foreground);
 }
 
+.sidenav hr {
+    background: linear-gradient(to right, var(--darker-background), rgba(0, 0, 0, 0) 85%);
+    height: 5px;
+    border: 0;
+}
+
 /* The side navigation menu */
 .opennav {
     color: var(--foreground);

@@ -6,10 +6,9 @@
     <title>Cuben</title>
     <link rel="icon" type="image/x-icon" href="/src/images/logo.ico">
     <link rel="stylesheet" href="css/style.css"> <!-- Defautl styling -->
-    <link rel="stylesheet" href="css/stats.css">
+    <link rel="stylesheet" href="css/index.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="sidenav" class="sidenav">
@@ -28,27 +27,9 @@
     <span class="opennav" id="opennav" onclick="openNav()">&#8614;</span>
 
     <div id="main">
-        <div class="stats-container">
-            <h2>Statistics Chart</h2>
-            <div class="controls">
-                <label for="category">Select Category:</label>
-                <select id="category"></select>
-
-                <label for="numberOfRuns">Number of Runs:</label>
-                <select id="numberOfRuns">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="50">50</option>
-                    <option value="all">All Time</option>
-                </select>
-            </div>
-            <canvas id="statsChart"></canvas>
-        </div>
     </div>
 
+    <script src="js/algorithms.js"></script>
     <script src="js/script.js"></script> <!-- Default script -->
-    <script src="js/stats.js"></script>
 </body>
 </html>
