@@ -113,6 +113,46 @@ function closeSettings() {
     modal.style.display = "none";
 }
 
+// Show unsaved setting indicator on change
+function showUnsaved() {
+    const settings = {
+        category: document.getElementById("category").value,
+        saveTime: document.getElementById("save-time").value,
+        averageN: document.getElementById("average-n").value,
+        bestN: document.getElementById("best-n").value,
+        scrambles: document.getElementById("scrambles-toggle").checked ? "on" : "off",
+        bestWorst: document.getElementById("best-worst-toggle").checked ? "on" : "off",
+        penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
+        sound: document.getElementById("sound-toggle").checked ? "on" : "off"
+    };
+
+    fetch('http://localhost:3000/settings')
+        .then(response => response.json())
+        .then(savedSettings => {
+            for (const key in settings) {
+                console.log(key.id);
+                const unsavedIndicator = document.getElementById(`unsaved-${key}`);
+                if (settings[key] !== savedSettings[key]) {
+                    unsavedIndicator.style.display = "inline";
+                } else {
+                    unsavedIndicator.style.display = "none";
+                }
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching settings:", error);
+        });
+}
+// Attach change event listeners to all relevant inputs
+const inputs = document.querySelectorAll(
+    "#category, #save-time, #average-n, #best-n, #scrambles-toggle, #best-worst-toggle, #penalties-toggle, #sound-toggle"
+);
+
+inputs.forEach(input => {
+    input.addEventListener("change", showUnsaved);
+});
+
+
 // Save settings
 function saveSettings() {
     const settings = {
@@ -123,6 +163,7 @@ function saveSettings() {
         scrambles: document.getElementById("scrambles-toggle").checked ? "on" : "off",
         bestWorst: document.getElementById("best-worst-toggle").checked ? "on" : "off",
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
+        sound: document.getElementById("sound-toggle").checked ? "on" : "off"
     };
 
     fetch('http://localhost:3000/settings', {
