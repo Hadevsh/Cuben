@@ -68,7 +68,7 @@ select:focus {
 }
 
 .sidenav hr {
-    background: linear-gradient(to right, var(--darker-background), rgba(0, 0, 0, 0) 85%);
+    background: linear-gradient(to left, var(--background) 80%, rgba(0, 0, 0, 0));
     height: 5px;
     border: 0;
 }
