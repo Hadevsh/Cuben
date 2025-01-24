@@ -117,23 +117,23 @@
 
 /* Rubiks Cube Scrambles */
 .visualizer-container {
-    margin-top: 20px;
+    margin-top: -250px;
     text-align: center;
     color: #fff;
 }
 
 #rubiks-cube {
     display: grid;
-    grid-template-columns: repeat(12, 40px);
-    grid-template-rows: repeat(9, 40px);
+    grid-template-columns: repeat(12, 20px);
+    grid-template-rows: repeat(9, 20px);
     gap: 2px;
     justify-content: center;
     margin: 20px auto;
 }
 
 .square {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-color: #000;
     border: 1px solid #333;
 }
@@ -151,19 +151,11 @@
 
 #visualizer-controls input {
     padding: 8px;
-    font-size: 16px;
+    font-size: 12px;
     margin-right: 10px;
 }
 
 #visualizer-controls button {
     padding: 8px 16px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-#visualizer-controls button:hover {
-    background-color: #444;
+    font-size: 12px;
 }

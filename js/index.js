@@ -486,10 +486,11 @@ function applyScramble() {
     const lengthInput = document.getElementById('scrambleLength').value;
     const scrambleLength = parseInt(lengthInput, 10) || 20; // Default to 20 moves if input is invalid
     const scramble = generateScramble(scrambleLength);
-    document.getElementById('scrambleOutput').innerText = scramble;
 
     // Reset cube state (optional)
     resetCube();
+
+    document.getElementById('scrambleOutput').innerText = scramble;
 
     // Apply scramble moves to the cube
     const moves = scramble.split(' ');
@@ -520,6 +521,7 @@ function resetCube() {
     cube.L = Array(9).fill('orange');
     cube.R = Array(9).fill('red');
     renderCube();
+    document.getElementById("scrambleOutput").innerHTML = ``;
 }
 
 // Initial rendering and button logic
@@ -528,9 +530,9 @@ function init() {
     container.innerHTML = `
         <label for="scrambleLength">Scramble Length:</label>
         <input type="number" id="scrambleLength" value="20" min="1">
-        <button onclick="applyScramble()">Generate Scramble</button>
-        <button onclick="resetCube()">Reset Cube</button>
-        <p>Scramble: <span id="scrambleOutput"></span></p>
+        <button onclick="applyScramble()">Scramble</button>
+        <button onclick="resetCube()">Reset</button>
+        <p><span id="scrambleOutput"></span></p>
     `;
     renderCube();
 }
