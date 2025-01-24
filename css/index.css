@@ -139,11 +139,11 @@
 }
 
 .white { background-color: #ffffff; }
-.yellow { background-color: #ffff00; }
-.red { background-color: #ff0000; }
-.orange { background-color: #ffa500; }
-.blue { background-color: #0000ff; }
-.green { background-color: #00ff00; }
+.yellow { background-color: #ebd634; }
+.red { background-color: #eb4034; }
+.orange { background-color: #eb9334; }
+.blue { background-color: #348feb; }
+.green { background-color: #34eb49; }
 
 #visualizer-controls {
     margin-top: 10px;
