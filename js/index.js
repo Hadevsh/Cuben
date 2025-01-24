@@ -458,3 +458,81 @@ function applyMoves() {
 }
 
 renderCube();
+
+// Random scramble generator
+function generateScramble(length) {
+    const moves = ['U', 'D', 'F', 'B', 'L', 'R'];
+    const modifiers = ['', "'", '2'];
+    let scramble = [];
+    let lastMove = '';
+
+    for (let i = 0; i < length; i++) {
+        let move;
+        do {
+            move = moves[Math.floor(Math.random() * moves.length)];
+        } while (move === lastMove); // Avoid repeating the same face
+
+        lastMove = move;
+
+        const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
+        scramble.push(move + modifier);
+    }
+
+    return scramble.join(' ');
+}
+
+// Scramble function to display scramble and apply it
+function applyScramble() {
+    const lengthInput = document.getElementById('scrambleLength').value;
+    const scrambleLength = parseInt(lengthInput, 10) || 20; // Default to 20 moves if input is invalid
+    const scramble = generateScramble(scrambleLength);
+    document.getElementById('scrambleOutput').innerText = scramble;
+
+    // Reset cube state (optional)
+    resetCube();
+
+    // Apply scramble moves to the cube
+    const moves = scramble.split(' ');
+    for (const move of moves) {
+        const baseMove = move[0];
+        const isCounterClockwise = move.includes("'");
+        const isDouble = move.includes('2');
+
+        switch (baseMove) {
+            case 'U': moveU(!isCounterClockwise); if (isDouble) moveU(!isCounterClockwise); break;
+            case 'D': moveD(!isCounterClockwise); if (isDouble) moveD(!isCounterClockwise); break;
+            case 'F': moveF(!isCounterClockwise); if (isDouble) moveF(!isCounterClockwise); break;
+            case 'B': moveB(!isCounterClockwise); if (isDouble) moveB(!isCounterClockwise); break;
+            case 'L': moveL(!isCounterClockwise); if (isDouble) moveL(!isCounterClockwise); break;
+            case 'R': moveR(!isCounterClockwise); if (isDouble) moveR(!isCounterClockwise); break;
+        }
+    }
+
+    renderCube();
+}
+
+// Reset cube to the solved state
+function resetCube() {
+    cube.U = Array(9).fill('white');
+    cube.D = Array(9).fill('yellow');
+    cube.F = Array(9).fill('green');
+    cube.B = Array(9).fill('blue');
+    cube.L = Array(9).fill('orange');
+    cube.R = Array(9).fill('red');
+    renderCube();
+}
+
+// Initial rendering and button logic
+function init() {
+    const container = document.getElementById('visualizer-controls');
+    container.innerHTML = `
+        <label for="scrambleLength">Scramble Length:</label>
+        <input type="number" id="scrambleLength" value="20" min="1">
+        <button onclick="applyScramble()">Generate Scramble</button>
+        <button onclick="resetCube()">Reset Cube</button>
+        <p>Scramble: <span id="scrambleOutput"></span></p>
+    `;
+    renderCube();
+}
+
+init();
