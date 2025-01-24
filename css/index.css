@@ -114,3 +114,56 @@
 .fa {
     display: none;
 }
+
+/* Rubiks Cube Scrambles */
+.visualizer-container {
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+#rubiks-cube {
+    display: grid;
+    grid-template-columns: repeat(12, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 2px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border: 1px solid #333;
+}
+
+.white { background-color: #ffffff; }
+.yellow { background-color: #ffff00; }
+.red { background-color: #ff0000; }
+.orange { background-color: #ffa500; }
+.blue { background-color: #0000ff; }
+.green { background-color: #00ff00; }
+
+#visualizer-controls {
+    margin-top: 10px;
+}
+
+#visualizer-controls input {
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#visualizer-controls button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#visualizer-controls button:hover {
+    background-color: #444;
+}

@@ -279,3 +279,182 @@ function findBWTimes(timespan=null) {
         }
     })
 }
+
+// ------------------------------------------------------------
+const cube = {
+    U: Array(9).fill('white'),
+    D: Array(9).fill('yellow'),
+    F: Array(9).fill('green'),
+    B: Array(9).fill('blue'),
+    L: Array(9).fill('orange'),
+    R: Array(9).fill('red')
+};
+
+function renderCube() {
+    const cubeContainer = document.getElementById('rubiks-cube');
+    cubeContainer.innerHTML = '';
+    const faces = { U: [1, 4], L: [4, 1], F: [4, 4], R: [4, 7], B: [4, 10], D: [7, 4] };
+    for (const face in faces) {
+        const [startRow, startCol] = faces[face];
+        for (let i = 0; i < 9; i++) {
+            const square = document.createElement('div');
+            square.className = `square ${cube[face][i]}`;
+            square.style.gridRowStart = Math.floor(i / 3) + startRow;
+            square.style.gridColumnStart = (i % 3) + startCol;
+            cubeContainer.appendChild(square);
+        }
+    }
+}
+
+// Helper function to rotate a face clockwise
+function rotateFaceClockwise(face) {
+    const temp = [...cube[face]];
+    cube[face][0] = temp[6];
+    cube[face][1] = temp[3];
+    cube[face][2] = temp[0];
+    cube[face][3] = temp[7];
+    cube[face][5] = temp[1];
+    cube[face][6] = temp[8];
+    cube[face][7] = temp[5];
+    cube[face][8] = temp[2];
+}
+
+// Helper function to rotate a face counterclockwise
+function rotateFaceCounterClockwise(face) {
+    const temp = [...cube[face]];
+    cube[face][0] = temp[2];
+    cube[face][1] = temp[5];
+    cube[face][2] = temp[8];
+    cube[face][3] = temp[1];
+    cube[face][5] = temp[7];
+    cube[face][6] = temp[0];
+    cube[face][7] = temp[3];
+    cube[face][8] = temp[6];
+}
+
+// Move functions
+function moveU(clockwise = true) {
+    const temp = [...cube.F.slice(0, 3)];
+    if (clockwise) {
+        cube.F.splice(0, 3, ...cube.R.slice(0, 3));
+        cube.R.splice(0, 3, ...cube.B.slice(0, 3));
+        cube.B.splice(0, 3, ...cube.L.slice(0, 3));
+        cube.L.splice(0, 3, ...temp);
+        rotateFaceClockwise('U');
+    } else {
+        cube.F.splice(0, 3, ...cube.L.slice(0, 3));
+        cube.L.splice(0, 3, ...cube.B.slice(0, 3));
+        cube.B.splice(0, 3, ...cube.R.slice(0, 3));
+        cube.R.splice(0, 3, ...temp);
+        rotateFaceCounterClockwise('U');
+    }
+}
+
+function moveD(clockwise = true) {
+    const temp = [...cube.F.slice(6)];
+    if (clockwise) {
+        cube.F.splice(6, 3, ...cube.L.slice(6));
+        cube.L.splice(6, 3, ...cube.B.slice(6));
+        cube.B.splice(6, 3, ...cube.R.slice(6));
+        cube.R.splice(6, 3, ...temp);
+        rotateFaceClockwise('D');
+    } else {
+        cube.F.splice(6, 3, ...cube.R.slice(6));
+        cube.R.splice(6, 3, ...cube.B.slice(6));
+        cube.B.splice(6, 3, ...cube.L.slice(6));
+        cube.L.splice(6, 3, ...temp);
+        rotateFaceCounterClockwise('D');
+    }
+}
+
+function moveF(clockwise = true) {
+    const temp = [cube.U[6], cube.U[7], cube.U[8]];
+    if (clockwise) {
+        [cube.U[6], cube.U[7], cube.U[8]] = [cube.L[8], cube.L[5], cube.L[2]];
+        [cube.L[2], cube.L[5], cube.L[8]] = [cube.D[2], cube.D[1], cube.D[0]];
+        [cube.D[0], cube.D[1], cube.D[2]] = [cube.R[6], cube.R[3], cube.R[0]];
+        [cube.R[0], cube.R[3], cube.R[6]] = temp;
+        rotateFaceClockwise('F');
+    } else {
+        [cube.U[6], cube.U[7], cube.U[8]] = [cube.R[0], cube.R[3], cube.R[6]];
+        [cube.R[0], cube.R[3], cube.R[6]] = [cube.D[0], cube.D[1], cube.D[2]];
+        [cube.D[0], cube.D[1], cube.D[2]] = [cube.L[8], cube.L[5], cube.L[2]];
+        [cube.L[2], cube.L[5], cube.L[8]] = temp;
+        rotateFaceCounterClockwise('F');
+    }
+}
+
+function moveB(clockwise = true) {
+    const temp = [cube.U[0], cube.U[1], cube.U[2]];
+    if (clockwise) {
+        [cube.U[0], cube.U[1], cube.U[2]] = [cube.R[2], cube.R[5], cube.R[8]];
+        [cube.R[2], cube.R[5], cube.R[8]] = [cube.D[8], cube.D[7], cube.D[6]];
+        [cube.D[6], cube.D[7], cube.D[8]] = [cube.L[6], cube.L[3], cube.L[0]];
+        [cube.L[0], cube.L[3], cube.L[6]] = temp;
+        rotateFaceClockwise('B');
+    } else {
+        [cube.U[0], cube.U[1], cube.U[2]] = [cube.L[0], cube.L[3], cube.L[6]];
+        [cube.L[0], cube.L[3], cube.L[6]] = [cube.D[6], cube.D[7], cube.D[8]];
+        [cube.D[6], cube.D[7], cube.D[8]] = [cube.R[2], cube.R[5], cube.R[8]];
+        [cube.R[2], cube.R[5], cube.R[8]] = temp;
+        rotateFaceCounterClockwise('B');
+    }
+}
+
+function moveL(clockwise = true) {
+    const temp = [cube.U[0], cube.U[3], cube.U[6]];
+    if (clockwise) {
+        [cube.U[0], cube.U[3], cube.U[6]] = [cube.B[8], cube.B[5], cube.B[2]];
+        [cube.B[2], cube.B[5], cube.B[8]] = [cube.D[0], cube.D[3], cube.D[6]];
+        [cube.D[0], cube.D[3], cube.D[6]] = [cube.F[0], cube.F[3], cube.F[6]];
+        [cube.F[0], cube.F[3], cube.F[6]] = temp;
+        rotateFaceClockwise('L');
+    } else {
+        [cube.U[0], cube.U[3], cube.U[6]] = [cube.F[0], cube.F[3], cube.F[6]];
+        [cube.F[0], cube.F[3], cube.F[6]] = [cube.D[0], cube.D[3], cube.D[6]];
+        [cube.D[0], cube.D[3], cube.D[6]] = [cube.B[8], cube.B[5], cube.B[2]];
+        [cube.B[2], cube.B[5], cube.B[8]] = temp;
+        rotateFaceCounterClockwise('L');
+    }
+}
+
+function moveR(clockwise = true) {
+    const temp = [cube.U[2], cube.U[5], cube.U[8]];
+    if (clockwise) {
+        [cube.U[2], cube.U[5], cube.U[8]] = [cube.F[2], cube.F[5], cube.F[8]];
+        [cube.F[2], cube.F[5], cube.F[8]] = [cube.D[2], cube.D[5], cube.D[8]];
+        [cube.D[2], cube.D[5], cube.D[8]] = [cube.B[6], cube.B[3], cube.B[0]];
+        [cube.B[0], cube.B[3], cube.B[6]] = temp;
+        rotateFaceClockwise('R');
+    } else {
+        [cube.U[2], cube.U[5], cube.U[8]] = [cube.B[6], cube.B[3], cube.B[0]];
+        [cube.B[0], cube.B[3], cube.B[6]] = [cube.D[2], cube.D[5], cube.D[8]];
+        [cube.D[2], cube.D[5], cube.D[8]] = [cube.F[2], cube.F[5], cube.F[8]];
+        [cube.F[2], cube.F[5], cube.F[8]] = temp;
+        rotateFaceCounterClockwise('R');
+    }
+}
+
+function applyMoves() {
+    const movesInput = document.getElementById('moves').value.trim();
+    const moves = movesInput.split(' ');
+
+    for (const move of moves) {
+        const baseMove = move[0];
+        const isCounterClockwise = move.includes("'");
+        const isDouble = move.includes('2');
+
+        switch (baseMove) {
+            case 'U': moveU(!isCounterClockwise); if (isDouble) moveU(!isCounterClockwise); break;
+            case 'D': moveD(!isCounterClockwise); if (isDouble) moveD(!isCounterClockwise); break;
+            case 'F': moveF(!isCounterClockwise); if (isDouble) moveF(!isCounterClockwise); break;
+            case 'B': moveB(!isCounterClockwise); if (isDouble) moveB(!isCounterClockwise); break;
+            case 'L': moveL(!isCounterClockwise); if (isDouble) moveL(!isCounterClockwise); break;
+            case 'R': moveR(!isCounterClockwise); if (isDouble) moveR(!isCounterClockwise); break;
+        }
+    }
+
+    renderCube();
+}
+
+renderCube();
