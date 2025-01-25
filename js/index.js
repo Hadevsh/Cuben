@@ -181,6 +181,7 @@ function saveSettings() {
     // Update what to show
     document.getElementById("category-display").innerText = settings.category;
     findBWTimes(); // Best/Worst
+    cubeScramble(); // Show Cube scramble visualizer
     updateSettigsDisplay();
 
     showUnsaved();
@@ -202,6 +203,7 @@ function updateSettigsDisplay() {
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
             findBWTimes();
+            cubeScramble();
         });
 }
 updateSettigsDisplay();
@@ -457,8 +459,6 @@ function applyMoves() {
     renderCube();
 }
 
-renderCube();
-
 // Random scramble generator
 function generateScramble(length) {
     const moves = ['U', 'D', 'F', 'B', 'L', 'R'];
@@ -525,16 +525,28 @@ function resetCube() {
 }
 
 // Initial rendering and button logic
-function init() {
-    const container = document.getElementById('visualizer-controls');
-    container.innerHTML = `
-        <label for="scrambleLength">Scramble Length:</label>
-        <input type="number" id="scrambleLength" value="20" min="1">
-        <button onclick="applyScramble()">Scramble</button>
-        <button onclick="resetCube()">Reset</button>
-        <p><span id="scrambleOutput"></span></p>
-    `;
-    renderCube();
+function cubeScramble() {
+    fetch('http://localhost:3000/settings')
+    .then(response => response.json())
+    .then(settings => {
+        if (settings.scrambles === "on") { // Only show scrambles when "on" in settings
+            const container = document.getElementById('visualizer-controls');
+            container.innerHTML = `
+                <label for="scrambleLength">Scramble Length:</label>
+                <input type="number" id="scrambleLength" value="20" min="1">
+                <button onclick="applyScramble()">Scramble</button>
+                <button onclick="resetCube()">Reset</button>
+                <p><span id="scrambleOutput"></span></p>
+            `;
+            renderCube();
+        } if (settings.scrambles === "off") { // If scrambles setting is off
+            // Clear the container
+            document.getElementById('visualizer-controls').innerHTML = ``;
+            document.getElementById('rubiks-cube').innerHTML = ``;
+        }
+    }).catch(error => {
+        console.error('Error showing the scramble visualizer:', error);
+    });
 }
 
-init();
+cubeScramble();
