@@ -28,6 +28,10 @@
     user-select: text; /* Standard */
 }
 
+::selection {
+    background: rgba(101, 232, 255, 0.651);
+}
+
 button {
     position: relative;
     background: var(--nav-background);
