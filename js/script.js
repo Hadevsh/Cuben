@@ -31,23 +31,34 @@ function showToast(message, type = 'info', duration = 3000) {
     const toast = document.createElement('div');
     toast.classList.add('toast', 'show');
 
+    let toast_color = 'white'; // white is default
+    let icon = ''; // no icon is default
     // Set type-specific colors
     switch (type) {
         case 'success':
-            toast.style.backgroundColor = 'green';
+            toast_color = 'green';
+            icon = 'check';
             break;
         case 'error':
-            toast.style.backgroundColor = 'red';
+            toast_color = 'red';
+            icon = 'error';
             break;
         case 'warning':
-            toast.style.backgroundColor = 'orange';
+            toast_color = 'orange';
+            icon = 'warning';
             break;
+        case 'info':
+            toast_color = 'blue';
+            icon = 'info';
         default:
-            toast.style.backgroundColor = 'black';
+            toast_color = 'white';
+            icon = '';
     }
 
     // Set text content
-    toast.textContent = message;
+    // toast.textContent = message;
+    toast.style.backgroundColor = toast_color
+    toast.innerHTML = `<i class="fa fa-${icon}" id="unsaved-category" style="color: #fff; background: ${'green'}"></i> ${message}`
     toastContainer.appendChild(toast);
 
     // Remove after duration
