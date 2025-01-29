@@ -233,6 +233,11 @@ input:focus {
     transition: opacity 0.3s, transform 0.5s;
 }
 
+.toast i {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
 /* Show animation */
 .toast.show {
     transform: translateX(0%);
