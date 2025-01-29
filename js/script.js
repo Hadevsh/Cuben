@@ -21,4 +21,47 @@ imageContainer.addEventListener('mousemove', (e) => {
     hoverText.style.left = `${x}px`;
     hoverText.style.top = `${y + 15}px`;
 });
+
 openNav();
+
+function showToast(message, type = 'info', duration = 3000) {
+    const toastContainer = document.getElementById('toast-container');
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.classList.add('toast', 'show');
+
+    // Set type-specific colors
+    switch (type) {
+        case 'success':
+            toast.style.backgroundColor = 'green';
+            break;
+        case 'error':
+            toast.style.backgroundColor = 'red';
+            break;
+        case 'warning':
+            toast.style.backgroundColor = 'orange';
+            break;
+        default:
+            toast.style.backgroundColor = 'black';
+    }
+
+    // Set text content
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Remove after duration
+    setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, duration);
+}
+
+// Example usage:
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("test-btn").addEventListener("click", () => {
+        showToast("This is a test notification!", "success");
+    });
+});
