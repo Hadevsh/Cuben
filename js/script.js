@@ -36,20 +36,21 @@ function showToast(message, type = 'info', duration = 3000) {
     // Set type-specific colors
     switch (type) {
         case 'success':
-            toast_color = 'green';
+            toast_color = '#37a348';
             icon = 'check';
             break;
         case 'error':
-            toast_color = 'red';
-            icon = 'error';
+            toast_color = '#d64949';
+            icon = 'exclamation';
             break;
         case 'warning':
-            toast_color = 'orange';
+            toast_color = '#d6a949';
             icon = 'warning';
             break;
         case 'info':
-            toast_color = 'blue';
+            toast_color = '#4992d6';
             icon = 'info';
+            break;
         default:
             toast_color = 'white';
             icon = '';
@@ -58,7 +59,7 @@ function showToast(message, type = 'info', duration = 3000) {
     // Set text content
     // toast.textContent = message;
     toast.style.backgroundColor = toast_color
-    toast.innerHTML = `<i class="fa fa-${icon}" id="unsaved-category" style="color: #fff; background: ${'green'}"></i> ${message}`
+    toast.innerHTML = `<i class="fa fa-${icon}" id="unsaved-category" style="color: #fff; background: ${toast_color}"></i> ${message}`
     toastContainer.appendChild(toast);
 
     // Remove after duration
@@ -73,6 +74,6 @@ function showToast(message, type = 'info', duration = 3000) {
 // Example usage:
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("test-btn").addEventListener("click", () => {
-        showToast("This is a test notification!", "success");
+        showToast("This is a test notification!", "info");
     });
 });
