@@ -565,3 +565,4 @@ window.closeSettings = closeSettings;
 window.openNav = openNav;
 window.closeNav = closeNav;
 window.applyScramble = applyScramble;
+window.resetCube = resetCube;
