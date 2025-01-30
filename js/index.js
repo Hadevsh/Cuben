@@ -97,6 +97,7 @@ function addTimeToSession() {
         audio.play();
     }).catch(error => {
         console.error('Error saving time:', error);
+        showToast('Error saving time', 'error');
     });
 
     findBWTimes(); // Find best/worst times and display them
@@ -145,6 +146,7 @@ function showUnsaved() {
         })
         .catch(error => {
             console.error("Error fetching settings:", error);
+            showToast('Error fetching settings', 'error');
         });
 }
 // Attach change event listeners to all relevant inputs
@@ -276,6 +278,7 @@ function findBWTimes(timespan=null) {
                     } else {}
                 }).catch(error => {
                     console.error('Error finding best/worst time:', error);
+                    showToast('Error finding best/worst time. This could happen because of no times recorded yet.', 'error');
                     document.getElementById("best-time").innerText = `Best: N\\A`;
                     document.getElementById("worst-time").innerText = `Worst: N\\A`;
             });
@@ -551,6 +554,7 @@ function cubeScramble() {
         }
     }).catch(error => {
         console.error('Error showing the scramble visualizer:', error);
+        showToast('Error showing the scramble visualizer', 'error');
     });
 }
 
