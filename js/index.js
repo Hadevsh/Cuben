@@ -538,7 +538,7 @@ function cubeScramble() {
             const container = document.getElementById('visualizer-controls');
             container.innerHTML = `
                 <label for="scrambleLength">Scramble Length:</label>
-                <input type="number" id="scrambleLength" value="20" min="1">
+                <input type="number" id="scrambleLength" value="20" min="1" max="40">
                 <button onclick="applyScramble()">Scramble</button>
                 <button onclick="resetCube()">Reset</button>
                 <p><span id="scrambleOutput" class="selectable"></span></p>
