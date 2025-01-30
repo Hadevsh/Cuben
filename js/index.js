@@ -541,7 +541,7 @@ function cubeScramble() {
                 <input type="number" id="scrambleLength" value="20" min="1">
                 <button onclick="applyScramble()">Scramble</button>
                 <button onclick="resetCube()">Reset</button>
-                <p><span id="scrambleOutput"></span></p>
+                <p><span id="scrambleOutput" class="selectable"></span></p>
             `;
             renderCube();
         } if (settings.scrambles === "off") { // If scrambles setting is off
@@ -564,3 +564,4 @@ window.saveSettings = saveSettings;
 window.closeSettings = closeSettings;
 window.openNav = openNav;
 window.closeNav = closeNav;
+window.applyScramble = applyScramble;
