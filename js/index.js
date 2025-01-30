@@ -1,3 +1,5 @@
+import { showToast } from './toast.js';
+
 // ----------------------------------------------------- Timer -----------------------------------------------------
 let timerDisplay = document.getElementById('timer');
 let timer;
@@ -87,6 +89,7 @@ function addTimeToSession() {
         body: JSON.stringify({ category, time, date }),
     }).then(() => {
         console.log('Time saved successfully');
+        showToast('Time saved successfully');
 
         var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
         audio.volume = 0.2;
@@ -550,3 +553,12 @@ function cubeScramble() {
 }
 
 cubeScramble();
+
+// Explicitly Attach Functions to window.
+// - To make addTimeToSession (or any other function) accessible from index.html, 
+//   we need to attach it to the window object
+window.addTimeToSession = addTimeToSession;
+window.saveSettings = saveSettings;
+window.closeSettings = closeSettings;
+window.openNav = openNav;
+window.closeNav = closeNav;
