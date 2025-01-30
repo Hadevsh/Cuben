@@ -40,6 +40,7 @@ document.addEventListener('keyup', function(event) {
                 startTimer();
             } else {
                 console.log('Preparation interrupted');
+                showToast('Preparation interrupted', 'info');
             }
             timerDisplay.style.color = whiteColor;
             timerDisplay.style.textShadow = null; // Reset glow when timer is going
@@ -89,7 +90,7 @@ function addTimeToSession() {
         body: JSON.stringify({ category, time, date }),
     }).then(() => {
         console.log('Time saved successfully');
-        showToast('Time saved successfully');
+        showToast('Time saved successfully', 'success');
 
         var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
         audio.volume = 0.2;
@@ -175,6 +176,7 @@ function saveSettings() {
         body: JSON.stringify(settings),
     }).then(() => {
         console.log('Settings saved successfully');
+        showToast('Settings saved successfully', 'success');
 
         var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
         audio.volume = 0.2;
