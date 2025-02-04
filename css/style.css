@@ -204,18 +204,14 @@ input:focus {
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     font-size: 14px;
-    opacity: 1;
+    opacity: 0;
     transform: translateX(100%);
-    transition: opacity 0.3s, transform 0.5s;
-}
-
-.toast i {
-    margin-right: 10px;
-    font-size: 15px;
+    transition: opacity 0.3s ease-in-out, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Show animation */
 .toast.show {
+    opacity: 1;
     transform: translateX(0%);
 }
 
@@ -223,4 +219,9 @@ input:focus {
 .toast.hide {
     opacity: 0;
     transform: translateX(100%);
+}
+
+.toast i {
+    margin-right: 10px;
+    font-size: 15px;
 }
