@@ -14,9 +14,7 @@ let redColor = '#e82e2e';
 
 document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' && !preparing && !running) {
-        var audio = new Audio('/src/sounds/start-sound.mp3'); // Load start audio file
-        audio.volume = 0.2;
-        audio.play();
+        playSound('start-sound'); // Load start audio file
         event.preventDefault();
         preparing = true;
         timerDisplay.style.color = redColor;
@@ -32,9 +30,7 @@ document.addEventListener('keyup', function(event) {
     if (event.code === 'Space') {
         event.preventDefault();
         if (preparing && !running) {
-            var audio = new Audio('/src/sounds/start-cube.mp3'); // Load start timer run audio file
-            audio.volume = 0.2;
-            audio.play();
+            playSound('start-cube'); // Load start timer run audio file
             clearTimeout(holdTimeout);
             if (timerDisplay.style.color === greenColor) {
                 startTimer();
@@ -58,9 +54,7 @@ function startTimer() {
 }
 
 function stopTimer() {
-    var audio = new Audio('/src/sounds/end-cube.mp3'); // Load stop timer run audio file
-    audio.volume = 0.2;
-    audio.play();
+    playSound('end-cube'); // Load stop timer run audio file
     timerDisplay.style.textShadow = `0px 0px 10px ${whiteColor}`; // White glow
     clearInterval(timer);
     running = false;
@@ -92,9 +86,7 @@ function addTimeToSession() {
         console.log('Time saved successfully');
         showToast('Time saved successfully', 'success');
 
-        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
-        audio.volume = 0.2;
-        audio.play();
+        playSound('save-sound'); // Load save audio file
     }).catch(error => {
         console.error('Error saving time:', error);
         showToast('Error saving time', 'error');
@@ -180,9 +172,7 @@ function saveSettings() {
         console.log('Settings saved successfully');
         showToast('Settings saved successfully', 'success');
 
-        var audio = new Audio('/src/sounds/save-sound.mp3'); // Load save audio file
-        audio.volume = 0.2;
-        audio.play();
+        playSound('save-sound'); // Load save audio file
     });
 
     // Update what to show
@@ -231,6 +221,12 @@ function parseTimeToSeconds(timeStr) {
     const [minutes, rest] = timeStr.split(':');
     const [seconds, milliseconds] = rest.split('.');
     return parseInt(minutes, 10) * 60 + parseInt(seconds, 10) + parseInt(milliseconds, 10) / 100;
+}
+
+function playSound(sound) {
+    var audio = new Audio(`/src/sounds/${sound}.mp3`); // Load start audio file
+    audio.volume = 0.2;
+    audio.play();
 }
 
 // ----------------------------------------------------- To Show -----------------------------------------------------
