@@ -224,9 +224,18 @@ function parseTimeToSeconds(timeStr) {
 }
 
 function playSound(sound) {
-    var audio = new Audio(`/src/sounds/${sound}.mp3`); // Load start audio file
-    audio.volume = 0.2;
-    audio.play();
+    fetch('http://localhost:3000/settings')
+    .then(response => response.json())
+    .then(settings => {
+        if (settings.sound === "on") { // Only show best/worst when in settings
+            var audio = new Audio(`/src/sounds/${sound}.mp3`); // Load start audio file
+            audio.volume = 0.2;
+            audio.play();
+        }
+    }).catch(error => {
+        console.error('Error playing sound:', error);
+        showToast('Error playing sound.', 'error');
+    });
 }
 
 // ----------------------------------------------------- To Show -----------------------------------------------------
