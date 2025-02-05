@@ -298,7 +298,7 @@ function findBWTimes(timespan=null) {
     })
 }
 
-function findBestN(timespan=null) {
+function findBestN(timespan=5) {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
@@ -307,13 +307,26 @@ function findBestN(timespan=null) {
                 fetch('http://localhost:3000/times')
                 .then(response => response.json())
                 .then(times => {
-                    const data = times[category].last(10);
+                    const data = times[category];
 
-                    console.log(data);
+                    let bestTime = null;
+                    let bestEntry = null;
+                    let entry = null;
+                    for (let i = 0; i < timespan; i++) {
+                        entry = data[data.length - i - 1];
+                        if (entry.time !== "00:00.00") { // Ignore invalid times
+                            const timeInSeconds = parseTimeToSeconds(entry.time);
+                            if (bestTime === null || timeInSeconds < bestTime) {
+                                bestTime = timeInSeconds;
+                                bestEntry = entry;
+                            }
+                        }
+                    }
+                    document.getElementById("bestN").innerText = `Best of ${timespan}: ${bestEntry.time}`;
                 }).catch(error => {
-                    console.error('Error finding best/worst time:', error);
+                    console.error('Error finding best of n:', error);
                     showToast('Error finding best of time of n. This could happen because of no times recorded yet.', 'error');
-                    document.getElementById("bestN").innerText = `Best: N\\A`;
+                    document.getElementById("bestN").innerText = `Best of ${timespan}: N\\A`;
             });
         } if (settings.bestN === "none") { // If best of n settings is off
             // Clear the paragraphs
