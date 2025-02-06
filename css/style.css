@@ -10,6 +10,15 @@
     --darker-foreground: #797979;
 } */
 
+:root {
+    --background: #f5f5f5;
+    --nav-background: #eaeaea;
+    --darker-background: #dcdcdc;
+    --text: #202020;
+    --foreground: #4a4a4a;
+    --darker-foreground: #797979;
+}
+
 /* Ocean Breeze Theme */
 /* :root { 
     --background: #0a1f33;
@@ -51,14 +60,14 @@
 } */
 
 /* Lavender Dream Theme */
-:root {
+/* :root {
     --background: #22172b;
     --nav-background: #1a1221;
     --darker-background: #100a14;
     --text: #f3eaff;
     --foreground: #c5a3de;
     --darker-foreground: #8565a8;
-}
+} */
 
 * {
     font-family: "Nunito Sans", serif;
