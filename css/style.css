@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 /* Dark Theme */
-:root {
+/* :root {
     --background: #202020;
     --nav-background: #1b1b1b;
     --darker-background: #0f0f0f;
     --text: #fff;
     --foreground: #bbbbbb;
     --darker-foreground: #797979;
-}
+} */
 
 /* Ocean Breeze Theme */
 /* :root { 
@@ -19,6 +19,16 @@
     --foreground: #a8c6e6;
     --darker-foreground: #5f7e99;
 } */
+
+/* Sunset Glow Theme */
+:root {
+    --background: #2b1b0f;
+    --nav-background: #3d220f;
+    --darker-background: #1a0d05;
+    --text: #ffefe1;
+    --foreground: #e5a474;
+    --darker-foreground: #9e6643;
+}
 
 
 * {
