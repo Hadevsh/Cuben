@@ -41,13 +41,23 @@
 } */
 
 /* Forest Whisper Theme */
-:root {
+/* :root {
     --background: #1a3321;
     --nav-background: #132618;
     --darker-background: #0b180f;
     --text: #e0f2e9;
     --foreground: #8cb891;
     --darker-foreground: #567a5c;
+} */
+
+/* Lavender Dream Theme */
+:root {
+    --background: #22172b;
+    --nav-background: #1a1221;
+    --darker-background: #100a14;
+    --text: #f3eaff;
+    --foreground: #c5a3de;
+    --darker-foreground: #8565a8;
 }
 
 * {
