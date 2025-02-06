@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+/* Dark Theme */
 :root {
     --background: #202020;
     --nav-background: #1b1b1b;
@@ -8,6 +9,17 @@
     --foreground: #bbbbbb;
     --darker-foreground: #797979;
 }
+
+/* Ocean Breeze Theme */
+/* :root { 
+    --background: #0a1f33;
+    --nav-background: #081828;
+    --darker-background: #040d14;
+    --text: #f1faff;
+    --foreground: #a8c6e6;
+    --darker-foreground: #5f7e99;
+} */
+
 
 * {
     font-family: "Nunito Sans", serif;
