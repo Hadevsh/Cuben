@@ -21,15 +21,24 @@
 } */
 
 /* Sunset Glow Theme */
-:root {
+/* :root {
     --background: #2b1b0f;
     --nav-background: #3d220f;
     --darker-background: #1a0d05;
     --text: #ffefe1;
     --foreground: #e5a474;
     --darker-foreground: #9e6643;
-}
+} */
 
+/* Cyber Neon Theme */
+:root {
+    --background: #101010;
+    --nav-background: #080808;
+    --darker-background: #000000;
+    --text: #00ffcc;
+    --foreground: #00bfa5;
+    --darker-foreground: #00796b;
+}
 
 * {
     font-family: "Nunito Sans", serif;
