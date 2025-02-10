@@ -108,7 +108,7 @@ button {
 
 button:hover {
     color: var(--text);
-    border: 2px solid #2b2b2b;
+    border: 2px solid var(--darker-foreground);
 }
 
 select {
