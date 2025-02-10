@@ -61,6 +61,14 @@ function updateTheme() {
             foreground = "#a8c6e6";
             darker_foreground = "#5f7e99";
         }
+        else if (name === "sunset") {
+            background = "#3d220f";
+            nav_background = "#2b1b0f";
+            darker_background = "#1a0d05";
+            text = "#ffefe1";
+            foreground = "#e5a474";
+            darker_foreground = "#9e6643";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
