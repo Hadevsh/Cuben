@@ -269,6 +269,14 @@ function updateTheme() {
             foreground = "#bbbbbb";
             darker_foreground = "#797979";
         }
+        if (name === "light") {
+            background = "#f5f5f5";
+            nav_background = "#eaeaea";
+            darker_background = "#dcdcdc";
+            text = "#202020";
+            foreground = "#4a4a4a";
+            darker_foreground = "#797979";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
