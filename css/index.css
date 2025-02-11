@@ -28,7 +28,7 @@
 
 .instructions {
     font-style: italic;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     color: var(--darker-foreground);
 }
 
@@ -110,7 +110,6 @@
 }
 
 .save-time {
-    margin-top: 40px;
     width: 200px;
 }
 
