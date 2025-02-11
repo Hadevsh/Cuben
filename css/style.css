@@ -296,10 +296,10 @@ footer {
     bottom: 10px;
     background: rgba(0, 0, 0, 0);
 }
-
 footer h1 {
     font-size: 20px;
     background: rgba(0, 0, 0, 0);
+    margin-bottom: -10px;
 }
 footer h1 span {
     font-size: 14px;
