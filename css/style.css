@@ -70,6 +70,36 @@
     --darker-foreground: #8565a8;
 } */
 
+/* Midnight Purple Theme */
+/* :root {
+    --background: #0d021f;
+    --nav-background: #150734;
+    --darker-background: #090219;
+    --text: #e0d4ff;
+    --foreground: #9a70d8;
+    --darker-foreground: #65449b;
+} */
+
+/* Sunset Dunes */
+/* :root {
+    --background: #f4e4c1;
+    --nav-background: #e1c899;
+    --darker-background: #b8926c;
+    --text: #3a2f2f;
+    --foreground: #8a5a44;
+    --darker-foreground: #5c3c2e;
+} */
+
+/* Aurora Wave */
+/* :root {
+    --background: #1b3b5f;
+    --nav-background: #122c48;
+    --darker-background: #09172e;
+    --text: #daf7ff;
+    --foreground: #74d3e9;
+    --darker-foreground: #4b9bb8;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);
