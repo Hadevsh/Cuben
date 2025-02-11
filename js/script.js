@@ -114,3 +114,9 @@ export function updateTheme() {
 document.addEventListener("DOMContentLoaded", updateTheme());
 
 openNav();
+
+// Explicitly Attach Functions to window.
+// - To make addTimeToSession (or any other function) accessible from index.html, 
+//   we need to attach it to the window object
+window.openNav = openNav;
+window.closeNav = closeNav;
