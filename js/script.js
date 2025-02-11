@@ -14,16 +14,6 @@ function closeNav() {
     document.getElementById("footer").style.marginLeft = "0px";
 }
 
-const imageContainer = document.querySelector('.image');
-const hoverText = document.querySelector('.hover-text');
-
-imageContainer.addEventListener('mousemove', (e) => {
-    const x = e.clientX - imageContainer.offsetLeft;
-    const y = e.clientY - imageContainer.offsetTop;
-    hoverText.style.left = `${x}px`;
-    hoverText.style.top = `${y + 15}px`;
-});
-
 export function updateTheme() {
     fetch('http://localhost:3000/settings')
     .then(response => response.json())
