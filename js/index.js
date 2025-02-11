@@ -96,6 +96,26 @@ function addTimeToSession() {
     findBWTimes(); // Find best/worst times and display them
     findBestN(); // Find best of n and display it
 }
+// ----------------------------------------------------- Info -----------------------------------------------------
+const infoModal = document.getElementById("info-modal");
+const infoBtn = document.getElementById("info-btn");
+
+// Open the info modal
+infoBtn.addEventListener("click", () => {
+    infoModal.style.display = "block";
+});
+
+// Close the modal
+function closeInfo() {
+    infoModal.style.display = "none";
+}
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener("click", (event) => {
+    if (event.target === infoModal) {
+        closeInfo();
+    }
+});
 
 // ----------------------------------------------------- Settings -----------------------------------------------------
 // Get the modal element and settings button
@@ -220,8 +240,6 @@ window.addEventListener("click", (event) => {
         closeSettings();
     }
 });
-
-// 1. Add an indicator on settings change (to save)
 
 // ----------------------------------------------------- Utils -----------------------------------------------------
 // Times data utils
@@ -620,6 +638,7 @@ cubeScramble();
 window.addTimeToSession = addTimeToSession;
 window.saveSettings = saveSettings;
 window.closeSettings = closeSettings;
+window.closeInfo = closeInfo;
 window.openNav = openNav;
 window.closeNav = closeNav;
 window.applyScramble = applyScramble;
