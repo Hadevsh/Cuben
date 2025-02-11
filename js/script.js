@@ -22,7 +22,7 @@ imageContainer.addEventListener('mousemove', (e) => {
     hoverText.style.top = `${y + 15}px`;
 });
 
-function updateTheme() {
+export function updateTheme() {
     fetch('http://localhost:3000/settings')
     .then(response => response.json())
     .then(settings => {
