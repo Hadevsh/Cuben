@@ -47,6 +47,21 @@
     color: var(--text);
 }
 
+#info-btn {
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    right: 60px;
+    color: var(--foreground);
+    transition: color 0.3s, transform 0.5s ease;
+}
+
+#info-btn:hover {
+    transform: rotate(180deg);
+    cursor: pointer;
+    color: var(--text);
+}
+
 /* Settings menu */
 /* Modal Background */
 .modal {
