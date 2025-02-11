@@ -117,11 +117,14 @@
     display: none;
 }
 
+#unsaved-category {
+    color: var(--foreground);
+}
+
 /* Rubiks Cube Scrambles */
 .visualizer-container {
     margin-top: -250px;
     text-align: center;
-    color: #fff;
 }
 
 #rubiks-cube {
