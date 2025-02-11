@@ -95,6 +95,14 @@ export function updateTheme() {
             foreground = "#c5a3de";
             darker_foreground = "#8565a8";
         }
+        else if (name === "midnight") {
+            background = "#0d021f";
+            nav_background = "#150734";
+            darker_background = "#090219";
+            text = "#e0d4ff";
+            foreground = "#9a70d8";
+            darker_foreground = "#65449b";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
