@@ -85,6 +85,14 @@ function updateTheme() {
             foreground = "#8cb891";
             darker_foreground = "#567a5c";
         }
+        else if (name === "lavender") {
+            background = "#22172b";
+            nav_background = "#1a1221";
+            darker_background = "#100a14";
+            text = "#f3eaff";
+            foreground = "#c5a3de";
+            darker_foreground = "#8565a8";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
