@@ -324,7 +324,7 @@ function findBWTimes(timespan=null) {
     })
 }
 
-function findBestN(timespan=5) {
+function findBestN() {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
@@ -334,6 +334,7 @@ function findBestN(timespan=5) {
                 .then(response => response.json())
                 .then(times => {
                     const data = times[category];
+                    const timespan = settings.bestN;
 
                     let bestTime = null;
                     let bestEntry = null;
