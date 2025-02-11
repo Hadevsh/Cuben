@@ -3,6 +3,7 @@ function openNav() {
     document.getElementById("sidenav").style.width = "200px";
     document.getElementById("main").style.marginLeft = "150px";
     document.getElementById("opennav").style.opacity = "0%";
+    document.getElementById("footer").style.marginLeft = "-150px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
@@ -10,6 +11,7 @@ function closeNav() {
     document.getElementById("sidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     document.getElementById("opennav").style.opacity = "100%";
+    document.getElementById("footer").style.marginLeft = "0px";
 }
 
 const imageContainer = document.querySelector('.image');

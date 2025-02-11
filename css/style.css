@@ -287,3 +287,23 @@ input:focus {
     margin-right: 10px;
     font-size: 15px;
 }
+
+/* Footer */
+footer {
+    transition: all .5s;
+    position: fixed;
+    z-index: 50;
+    bottom: 10px;
+    background: rgba(0, 0, 0, 0);
+}
+
+footer h1 {
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+footer h1 span {
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
