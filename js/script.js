@@ -103,6 +103,14 @@ export function updateTheme() {
             foreground = "#9a70d8";
             darker_foreground = "#65449b";
         }
+        else if (name === "dunes") {
+            background = "#f4e4c1";
+            nav_background = "#e1c899";
+            darker_background = "#b8926c";
+            text = "#3a2f2f";
+            foreground = "#8a5a44";
+            darker_foreground = "#5c3c2e";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
