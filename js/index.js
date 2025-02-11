@@ -293,6 +293,14 @@ function updateTheme() {
             foreground = "#e5a474";
             darker_foreground = "#9e6643";
         }
+        else if (name === "cyber") {
+            background = "#101010";
+            nav_background = "#080808";
+            darker_background = "#000000";
+            text = "#00ffcc";
+            foreground = "#00bfa5";
+            darker_foreground = "#00796b";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
