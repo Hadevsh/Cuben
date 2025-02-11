@@ -101,6 +101,14 @@ export function updateTheme() {
             foreground = "#8a5a44";
             darker_foreground = "#5c3c2e";
         }
+        else if (name === "aurora") {
+            background = "#1b3b5f";
+            nav_background = "#122c48";
+            darker_background = "#09172e";
+            text = "#daf7ff";
+            foreground = "#74d3e9";
+            darker_foreground = "#4b9bb8";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
