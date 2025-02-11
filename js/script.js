@@ -77,6 +77,14 @@ function updateTheme() {
             foreground = "#00bfa5";
             darker_foreground = "#00796b";
         }
+        else if (name === "forest") {
+            background = "#1a3321";
+            nav_background = "#132618";
+            darker_background = "#0b180f";
+            text = "#e0f2e9";
+            foreground = "#8cb891";
+            darker_foreground = "#567a5c";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
