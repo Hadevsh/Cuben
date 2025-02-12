@@ -414,7 +414,6 @@ function findAverageN() {
                     let entry = null;
                     for (let i = 0; i < timespan; i++) {
                         entry = data[data.length - i - 1];
-                        console.log(entry)
                         if (entry.time !== "00:00.00") { // Ignore invalid times
                             const timeInSeconds = parseTimeToSeconds(entry.time);
                             allTimes += timeInSeconds;
