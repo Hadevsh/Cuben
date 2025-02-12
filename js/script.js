@@ -128,7 +128,6 @@ export function updateTheme() {
     })
 }
 document.addEventListener("DOMContentLoaded", updateTheme());
-
 openNav();
 
 // Explicitly Attach Functions to window.

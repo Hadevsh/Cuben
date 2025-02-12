@@ -19,10 +19,10 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
         preparing = true;
         timerDisplay.style.color = redColor;
-        timerDisplay.style.textShadow = `0px 0px 10px ${redColor}`; // Red glow
+        timerDisplay.style.textShadow = `0px 0px 20px ${redColor}`; // Red glow
         holdTimeout = setTimeout(() => {
             timerDisplay.style.color = greenColor;
-            timerDisplay.style.textShadow = `0px 0px 10px ${greenColor}`; // Green glow
+            timerDisplay.style.textShadow = `0px 0px 20px ${greenColor}`; // Green glow
         }, 1000); // 1 second
     }
 });
@@ -56,7 +56,7 @@ function startTimer() {
 
 function stopTimer() {
     playSound('end-cube'); // Load stop timer run audio file
-    timerDisplay.style.textShadow = `0px 0px 10px ${whiteColor}`; // White glow
+    timerDisplay.style.textShadow = `0px 0px 20px ${whiteColor}`; // White glow
     clearInterval(timer);
     running = false;
 }
