@@ -103,6 +103,7 @@ function addTimeToSession() {
 
     findBWTimes(); // Find best/worst times and display them
     findBestN(); // Find best of n and display it
+    findAverageN(); // Find average of n and display it
 }
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
@@ -211,6 +212,7 @@ function saveSettings() {
     document.getElementById("category-display").innerText = settings.category;
     findBWTimes(); // Best/Worst
     findBestN(); // Best of n
+    findAverageN(); // Average of N
     cubeScramble(); // Show Cube scramble visualizer
     updateTheme(); // Update theme
     updateSettigsDisplay();
@@ -236,6 +238,7 @@ function updateSettigsDisplay() {
             document.getElementById("category-display").innerText = settings.category || "3x3";
             findBWTimes();
             findBestN();
+            findAverageN();
             cubeScramble();
             updateTheme();
         });
@@ -366,6 +369,42 @@ function findBestN() {
         } if (settings.bestN === "none") { // If best of n settings is off
             // Clear the paragraphs
             document.getElementById("bestN").innerText = ``;
+
+        }
+    })
+}
+
+function findAverageN() {
+    fetch('http://localhost:3000/settings')
+        .then(response => response.json())
+        .then(settings => {
+            if (settings.averageN !== "none") { // Only show average of n when in settings
+                const category = settings.category;
+                fetch('http://localhost:3000/times')
+                .then(response => response.json())
+                .then(times => {
+                    const data = times[category];
+                    const timespan = settings.averageN;
+
+                    let allTimes = null;
+                    let entry = null;
+                    for (let i = 0; i < timespan; i++) {
+                        entry = data[data.length - i - 1];
+                        console.log(entry)
+                        if (entry.time !== "00:00.00") { // Ignore invalid times
+                            const timeInSeconds = parseTimeToSeconds(entry.time);
+                            allTimes += timeInSeconds;
+                        }
+                    }
+                    document.getElementById("averageN").innerText = `Best of ${timespan}: ${allTimes / timespan}`;
+                }).catch(error => {
+                    console.error('Error finding AoN:', error);
+                    showToast('Error finding AoN. This could happen because of no times, or not enough times recorded yet.', 'error');
+                    document.getElementById("averageN").innerText = `Ao${timespan}: N\\A`;
+            });
+        } if (settings.averageN === "none") { // If AoN settings is off
+            // Clear the paragraphs
+            document.getElementById("averageN").innerText = ``;
 
         }
     })
