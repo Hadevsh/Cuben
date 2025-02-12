@@ -261,6 +261,30 @@ function parseTimeToSeconds(timeStr) {
     return parseInt(minutes, 10) * 60 + parseInt(seconds, 10) + parseInt(milliseconds, 10) / 100;
 }
 
+function secondsToTime(totalSeconds) {
+    // Round the total seconds to hundredths and work with integers.
+    const totalHundredths = Math.round(totalSeconds * 100);
+    
+    // Calculate minutes.
+    const minutes = Math.floor(totalHundredths / (60 * 100));
+    
+    // Calculate the remaining hundredths after removing the minutes.
+    const remainingHundredths = totalHundredths % (60 * 100);
+    
+    // Calculate whole seconds from the remainder.
+    const seconds = Math.floor(remainingHundredths / 100);
+    
+    // The final remainder is the hundredths.
+    const hundredths = remainingHundredths % 100;
+    
+    // Format each part to always have two digits.
+    const minutesStr = minutes.toString().padStart(2, '0');
+    const secondsStr = seconds.toString().padStart(2, '0');
+    const hundredthsStr = hundredths.toString().padStart(2, '0');
+    
+    return `${minutesStr}:${secondsStr}.${hundredthsStr}`;
+  }
+
 function playSound(sound) {
     fetch('http://localhost:3000/settings')
     .then(response => response.json())
@@ -378,7 +402,7 @@ function findAverageN() {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
-            if (settings.averageN !== "none") { // Only show average of n when in settings
+            if (settings.averageN !== "none") { // Only show AoN when in settings
                 const category = settings.category;
                 fetch('http://localhost:3000/times')
                 .then(response => response.json())
@@ -396,7 +420,7 @@ function findAverageN() {
                             allTimes += timeInSeconds;
                         }
                     }
-                    document.getElementById("averageN").innerText = `Best of ${timespan}: ${allTimes / timespan}`;
+                    document.getElementById("averageN").innerText = `Best of ${timespan}: ${secondsToTime(allTimes / timespan)}`;
                 }).catch(error => {
                     console.error('Error finding AoN:', error);
                     showToast('Error finding AoN. This could happen because of no times, or not enough times recorded yet.', 'error');
@@ -405,7 +429,6 @@ function findAverageN() {
         } if (settings.averageN === "none") { // If AoN settings is off
             // Clear the paragraphs
             document.getElementById("averageN").innerText = ``;
-
         }
     })
 }
