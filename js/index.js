@@ -43,6 +43,14 @@ document.addEventListener('keyup', function(event) {
             timerDisplay.style.textShadow = null; // Reset glow when timer is going
             preparing = false;
         } else if (running) {
+            // If auto time saving in settings
+            fetch('http://localhost:3000/settings')
+            .then(response => response.json())
+            .then(settings => {
+                if (settings.saveTime === "auto") {
+                    addTimeToSession();
+                }
+            })
             stopTimer();
         }
     }
