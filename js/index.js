@@ -363,7 +363,7 @@ function findBestN() {
     fetch('http://localhost:3000/settings')
         .then(response => response.json())
         .then(settings => {
-            if (settings.bestN !== "none") { // Only show best of n when in settings
+            if (settings.bestN !== "none") { // Only show BoN when in settings
                 const category = settings.category;
                 fetch('http://localhost:3000/times')
                 .then(response => response.json())
@@ -384,13 +384,13 @@ function findBestN() {
                             }
                         }
                     }
-                    document.getElementById("bestN").innerText = `Best of ${timespan}: ${bestEntry.time}`;
+                    document.getElementById("bestN").innerText = `Bo${timespan}: ${bestEntry.time}`;
                 }).catch(error => {
                     console.error('Error finding best of n:', error);
-                    showToast('Error finding best of time of n. This could happen because of no times recorded yet.', 'error');
-                    document.getElementById("bestN").innerText = `Best of ${timespan}: N\\A`;
+                    showToast('Error finding BoN. This could happen because of no times, or not enough times recorded yet.', 'error');
+                    document.getElementById("bestN").innerText = `Bo${timespan}: N\\A`;
             });
-        } if (settings.bestN === "none") { // If best of n settings is off
+        } if (settings.bestN === "none") { // If BoN settings is off
             // Clear the paragraphs
             document.getElementById("bestN").innerText = ``;
 
@@ -420,7 +420,7 @@ function findAverageN() {
                             allTimes += timeInSeconds;
                         }
                     }
-                    document.getElementById("averageN").innerText = `Best of ${timespan}: ${secondsToTime(allTimes / timespan)}`;
+                    document.getElementById("averageN").innerText = `Ao${timespan}: ${secondsToTime(allTimes / timespan)}`;
                 }).catch(error => {
                     console.error('Error finding AoN:', error);
                     showToast('Error finding AoN. This could happen because of no times, or not enough times recorded yet.', 'error');
