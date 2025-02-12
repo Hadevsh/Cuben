@@ -34,7 +34,8 @@
             <div id="best-time" class="selectable"></div>
             <div id="worst-time" class="selectable"></div>
             <div id="bestN" class="selectable"></div>
-            <button class="save-time" onclick="addTimeToSession()">Save Time</button>
+            <div id="averageN" class="selectable"></div>
+            <button class="save-time" id="save-time" onclick="addTimeToSession()">Save Time</button>
         </div>
 
         <!-- Rubik's Cube Visualizer Section -->
@@ -102,10 +103,10 @@
                 <label for="average-n">Average of N:</label>
                 <select name="average-n" id="average-n">
                     <option value="none" selected>None</option>
-                    <option value="Ao5">Ao5</option>
-                    <option value="Ao12">Ao12</option>
-                    <option value="Ao20">Ao20</option>
-                    <option value="Ao25">Ao25</option>
+                    <option value="5">Ao5</option>
+                    <option value="12">Ao12</option>
+                    <option value="20">Ao20</option>
+                    <option value="25">Ao25</option>
                 </select>
                 <i class="fa fa-warning" id="unsaved-averageN" style="display: none;"></i>
                 <br><br>
