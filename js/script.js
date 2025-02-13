@@ -141,6 +141,14 @@ export function updateTheme() {
             foreground = "#ff4d4d";
             darker_foreground = "#b30000";
         }
+        else if (name === "github") {
+            background = "#0d1117";
+            nav_background = "#161b22";
+            darker_background = "#010409";
+            text = "#c9d1d9";
+            foreground = "#8b949e";
+            darker_foreground = "#484f58";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {

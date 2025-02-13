@@ -140,6 +140,16 @@
     --darker-foreground: #b30000;
 } */
 
+/* GitHub Dark */
+/* :root {
+    --background: #0d1117;
+    --nav-background: #161b22;
+    --darker-background: #010409;
+    --text: #c9d1d9;
+    --foreground: #8b949e;
+    --darker-foreground: #484f58;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);
