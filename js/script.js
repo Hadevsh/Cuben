@@ -125,6 +125,14 @@ export function updateTheme() {
             foreground = "#748c69";
             darker_foreground = "#4c6249";
         }
+        else if (name === "galactic") {
+            background = "#0a002b";
+            nav_background = "#16004f";
+            darker_background = "#05001a";
+            text = "#ffffff";
+            foreground = "#00c8ff";
+            darker_foreground = "#0071b3";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {

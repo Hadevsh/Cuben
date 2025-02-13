@@ -120,6 +120,16 @@
     --darker-foreground: #4c6249;
 } */
 
+/* Galactic Glow */
+/* :root {
+    --background: #0a002b;
+    --nav-background: #16004f;
+    --darker-background: #05001a;
+    --text: #ffffff;
+    --foreground: #00c8ff;
+    --darker-foreground: #0071b3;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);
