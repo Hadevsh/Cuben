@@ -109,6 +109,14 @@ export function updateTheme() {
             foreground = "#74d3e9";
             darker_foreground = "#4b9bb8";
         }
+        else if (name === "funky") {
+            background = "#ff007f";
+            nav_background = "#ff9800";
+            darker_background = "#d6006c";
+            text = "#fffaf0";
+            foreground = "#00eaff";
+            darker_foreground = "#ffdd00";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {

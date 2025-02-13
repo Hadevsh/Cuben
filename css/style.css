@@ -100,6 +100,16 @@
     --darker-foreground: #4b9bb8;
 } */
 
+/* Funky Disco */
+/* :root {
+    --background: #ff007f;
+    --nav-background: #ff9800;
+    --darker-background: #d6006c;
+    --text: #fffaf0;
+    --foreground: #00eaff;
+    --darker-foreground: #ffdd00;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);
@@ -309,7 +319,7 @@ hr {
 
 /* Footer */
 footer {
-    transition: transform .5s;
+    transition: margin-left .5s;
     position: fixed;
     z-index: 50;
     bottom: 10px;
