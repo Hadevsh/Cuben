@@ -117,6 +117,14 @@ export function updateTheme() {
             foreground = "#00eaff";
             darker_foreground = "#ffdd00";
         }
+        else if (name === "serene") {
+            background = "#f3f1e9";
+            nav_background = "#d4c8b0";
+            darker_background = "#a69b88";
+            text = "#3a3a3a";
+            foreground = "#748c69";
+            darker_foreground = "#4c6249";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
