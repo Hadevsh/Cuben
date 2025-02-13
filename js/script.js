@@ -157,6 +157,14 @@ export function updateTheme() {
             foreground = "#d8507e";
             darker_foreground = "#cc3366";
         }
+        else if (name === "black") {
+            background = "#000000";
+            nav_background = "#0d0d0d";
+            darker_background = "#080808";
+            text = "#ffffff";
+            foreground = "#a6a6a6";
+            darker_foreground = "#666666";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {

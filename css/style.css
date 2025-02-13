@@ -160,6 +160,16 @@
     --darker-foreground: #cc3366;
 } */
 
+/* Full Black */
+/* :root {
+    --background: #000000;
+    --nav-background: #0d0d0d;
+    --darker-background: #080808;
+    --text: #ffffff;
+    --foreground: #a6a6a6;
+    --darker-foreground: #666666;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);
