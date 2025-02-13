@@ -72,6 +72,11 @@ async function updateChart() {
         chart.destroy();
     }
 
+    var style = getComputedStyle(document.body);
+    var foregroundCol = style.getPropertyValue('--foreground');
+    var drkForCol = style.getPropertyValue('--darker-foreground');
+    var textCol = style.getPropertyValue('--text');
+
     const ctx = document.getElementById('statsChart').getContext('2d');
     chart = new Chart(ctx, {
         type: 'line',
@@ -81,8 +86,8 @@ async function updateChart() {
                 {
                     label: 'Times (ms)',
                     data: chartData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: `${foregroundCol}50`, // 50% opacity of the foreground color
+                    borderColor: foregroundCol,
                     borderWidth: 1.5,
                 },
             ],
@@ -90,6 +95,7 @@ async function updateChart() {
         options: {
             tension: 0.4,
             responsive: true,
+            color: textCol,
             plugins: {
                 tooltip: {
                     callbacks: {
@@ -102,12 +108,24 @@ async function updateChart() {
                 },
             },
             scales: {
+                x: {
+                    ticks: {
+                        color: drkForCol, // Set x-axis labels color
+                    },
+                    grid: {
+                        color: `${drkForCol}30`, // Grid color for better visibility
+                    },
+                },
                 y: {
                     beginAtZero: true,
                     ticks: {
+                        color: drkForCol, // Set y-axis labels color
                         callback: function (value) {
                             return formatMilliseconds(value);
-                        },
+                        }
+                    },
+                    grid: {
+                        color: `${drkForCol}30`, // Adjust grid color
                     },
                 },
             },
