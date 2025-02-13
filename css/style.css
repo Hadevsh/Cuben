@@ -150,6 +150,16 @@
     --darker-foreground: #484f58;
 } */
 
+/* Sakura Blossom */
+/* :root {
+    --background: #ffe6f2;
+    --nav-background: #ffb3d9;
+    --darker-background: #ff80b3;
+    --text: #4d0026;
+    --foreground: #d8507e;
+    --darker-foreground: #cc3366;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);

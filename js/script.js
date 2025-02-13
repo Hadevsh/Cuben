@@ -149,6 +149,14 @@ export function updateTheme() {
             foreground = "#8b949e";
             darker_foreground = "#484f58";
         }
+        else if (name === "sakura") {
+            background = "#ffe6f2";
+            nav_background = "#ffb3d9";
+            darker_background = "#ff80b3";
+            text = "#4d0026";
+            foreground = "#d8507e";
+            darker_foreground = "#cc3366";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
