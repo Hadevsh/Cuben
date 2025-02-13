@@ -10,7 +10,7 @@
 #timer {
     color: var(--text);
     font-size: 7em;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 #category-display {
@@ -99,7 +99,7 @@
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 .close-btn:hover,
