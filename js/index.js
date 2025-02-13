@@ -10,7 +10,7 @@ let preparing = false;
 let holdTimeout;
 
 let greenColor = 'rgb(114, 232, 46)'; // Must be rgb for style comparison
-let whiteColor = '#fff';
+let timerColor = 'var(--text)';
 let redColor = '#e82e2e';
 
 document.addEventListener('keydown', function(event) {
@@ -39,7 +39,7 @@ document.addEventListener('keyup', function(event) {
                 console.log('Preparation interrupted');
                 showToast('Preparation interrupted', 'info');
             }
-            timerDisplay.style.color = whiteColor;
+            timerDisplay.style.color = timerColor;
             timerDisplay.style.textShadow = null; // Reset glow when timer is going
             preparing = false;
         } else if (running) {
@@ -64,7 +64,7 @@ function startTimer() {
 
 function stopTimer() {
     playSound('end-cube'); // Load stop timer run audio file
-    timerDisplay.style.textShadow = `0px 0px 20px ${whiteColor}`; // White glow
+    timerDisplay.style.textShadow = `-3px 3px 10px ${timerColor}`; // Text shadow with the same color as text
     clearInterval(timer);
     running = false;
 }
