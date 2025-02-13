@@ -130,6 +130,16 @@
     --darker-foreground: #0071b3;
 } */
 
+/* Crimson Blaze */
+/* :root {
+    --background: #300000;
+    --nav-background: #590000;
+    --darker-background: #1a0000;
+    --text: #ffffff;
+    --foreground: #ff4d4d;
+    --darker-foreground: #b30000;
+} */
+
 * {
     font-family: "Nunito Sans", serif;
     background: var(--background);

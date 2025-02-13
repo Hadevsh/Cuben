@@ -133,6 +133,14 @@ export function updateTheme() {
             foreground = "#00c8ff";
             darker_foreground = "#0071b3";
         }
+        else if (name === "crimson") {
+            background = "#300000";
+            nav_background = "#590000";
+            darker_background = "#1a0000";
+            text = "#ffffff";
+            foreground = "#ff4d4d";
+            darker_foreground = "#b30000";
+        }
 
         // Loop through stylesheets
         for (let sheet of styleSheets) {
