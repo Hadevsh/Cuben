@@ -14,6 +14,7 @@ function closeNav() {
     document.getElementById("footer").style.marginLeft = "0px";
 }
 
+// Themes
 export function updateTheme() {
     fetch('http://localhost:3000/settings')
     .then(response => response.json())

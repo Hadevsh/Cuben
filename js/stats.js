@@ -2,7 +2,7 @@ let chart; // Holds the Chart.js instance
 
 // Function to fetch the data
 async function fetchData() {
-    const response = await fetch('data/times.json');
+    const response = await fetch('http://localhost:3000/times');
     return await response.json();
 }
 
@@ -22,6 +22,7 @@ async function init() {
     // Add event listeners for auto-updating the chart
     document.getElementById('category').addEventListener('change', updateChart);
     document.getElementById('numberOfRuns').addEventListener('change', updateChart);
+    document.getElementById('movingAverage').addEventListener('change', updateChart);
 
     // Initialize the chart with default values
     updateChart();
@@ -44,11 +45,21 @@ function formatMilliseconds(milliseconds) {
         .padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
 }
 
+// Calculate moving average dynamically based on selected runs
+function movingAverage(data, period) {
+    return data.map((_, index, arr) => {
+        if (index < period) return null;
+        const subset = arr.slice(index - period + 1, index + 1);
+        return subset.reduce((sum, val) => sum + val, 0) / subset.length;
+    }).filter(x => x !== null);
+}
+
 // Update the chart
 async function updateChart() {
     const data = await fetchData();
     const category = document.getElementById('category').value;
     const numberOfRuns = document.getElementById('numberOfRuns').value;
+    const showMovingAvg = document.getElementById('movingAverage').checked;
 
     if (!data[category] || data[category].length === 0) {
         alert('No data available for this category.');
@@ -60,6 +71,9 @@ async function updateChart() {
         date: new Date(entry.date).toLocaleString(),
     }));
 
+    // Filter invalid times
+    times = times.filter(entry => entry.time > 0);
+
     // Handle "all" case or limit runs
     if (numberOfRuns !== 'all') {
         times = times.slice(-parseInt(numberOfRuns));
@@ -67,6 +81,9 @@ async function updateChart() {
 
     const labels = times.map((_, index) => `Run ${index + 1}`);
     const chartData = times.map((entry) => entry.time);
+    let movingAvgData = showMovingAvg ? movingAverage(chartData, 1) : [];
+
+    console.log(times.length);
 
     if (chart) {
         chart.destroy();
@@ -84,12 +101,22 @@ async function updateChart() {
             labels: labels,
             datasets: [
                 {
-                    label: 'Times (ms)',
+                    label: 'Solve Times',
                     data: chartData,
-                    backgroundColor: `${foregroundCol}50`, // 50% opacity of the foreground color
+                    backgroundColor: `${foregroundCol}50`,
                     borderColor: foregroundCol,
                     borderWidth: 1.5,
                 },
+                ...(showMovingAvg
+                    ? [{
+                        label: `Moving Average`,
+                        data: movingAvgData,
+                        backgroundColor: `${drkForCol}50`,
+                        borderColor: drkForCol,
+                        borderWidth: 2,
+                        borderDash: [5, 5], // Dotted line
+                    }]
+                    : []),
             ],
         },
         options: {
@@ -101,7 +128,7 @@ async function updateChart() {
                     callbacks: {
                         label: function (context) {
                             const time = formatMilliseconds(context.raw);
-                            const date = times[context.dataIndex].date;
+                            const date = times[context.dataIndex]?.date || "N/A";
                             return `Time: ${time}, Date: ${date}`;
                         },
                     },
@@ -110,22 +137,22 @@ async function updateChart() {
             scales: {
                 x: {
                     ticks: {
-                        color: drkForCol, // Set x-axis labels color
+                        color: drkForCol,
                     },
                     grid: {
-                        color: `${drkForCol}30`, // Grid color for better visibility
+                        color: `${drkForCol}30`,
                     },
                 },
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        color: drkForCol, // Set y-axis labels color
+                        color: drkForCol,
                         callback: function (value) {
                             return formatMilliseconds(value);
                         }
                     },
                     grid: {
-                        color: `${drkForCol}30`, // Adjust grid color
+                        color: `${drkForCol}30`,
                     },
                 },
             },
