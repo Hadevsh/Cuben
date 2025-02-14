@@ -177,6 +177,7 @@ export function updateTheme() {
                         rule.style.setProperty('--text', text);
                         rule.style.setProperty('--foreground', foreground);
                         rule.style.setProperty('--darker-foreground', darker_foreground);
+                        rule.style.setProperty('--selection', `${foreground}50`);
                     }
                 }
             }
