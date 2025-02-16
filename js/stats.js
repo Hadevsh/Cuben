@@ -45,13 +45,19 @@ function formatMilliseconds(milliseconds) {
         .padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
 }
 
-// Calculate moving average dynamically based on selected runs
-function movingAverage(data, period) {
-    return data.map((_, index, arr) => {
-        if (index < period) return null;
-        const subset = arr.slice(index - period + 1, index + 1);
-        return subset.reduce((sum, val) => sum + val, 0) / subset.length;
-    }).filter(x => x !== null);
+// Calculate Simple Moving Average (SMA)
+function simpleMovingAverage(data, period) {
+    let result = [];
+    for (let i = 0; i < data.length; i++) {
+        if (i < period - 1) {
+            result.push(null);
+        } else {
+            const subset = data.slice(i - period + 1, i + 1);
+            const avg = subset.reduce((sum, val) => sum + val, 0) / period;
+            result.push(avg);
+        }
+    }
+    return result;
 }
 
 // Update the chart
@@ -81,9 +87,7 @@ async function updateChart() {
 
     const labels = times.map((_, index) => `Run ${index + 1}`);
     const chartData = times.map((entry) => entry.time);
-    let movingAvgData = showMovingAvg ? movingAverage(chartData, 1) : [];
-
-    console.log(times.length);
+    let movingAvgData = showMovingAvg ? simpleMovingAverage(chartData, Math.min(chartData.length - 3, 5)) : [];
 
     if (chart) {
         chart.destroy();
@@ -109,7 +113,7 @@ async function updateChart() {
                 },
                 ...(showMovingAvg
                     ? [{
-                        label: `Moving Average`,
+                        label: `Simple Moving Average`,
                         data: movingAvgData,
                         backgroundColor: `${drkForCol}50`,
                         borderColor: drkForCol,
