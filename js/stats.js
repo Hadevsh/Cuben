@@ -135,13 +135,13 @@ async function updateChart() {
                         borderDash: [5, 5],
                     },
                     {
-                        label: `Bottom Standard Deviation`,
+                        label: `Std Deviation`,
                         data: stdDeviationData,
                         borderColor: rgbToAlpha(redColor, 0.5),
                         borderWidth: 1
                     },
                     {
-                        label: false,
+                        label: `Std Deviation`,
                         data: topStdDeviationData,
                         borderColor: rgbToAlpha(greenColor, 0.5),
                         borderWidth: 1
