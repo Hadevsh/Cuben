@@ -14,6 +14,40 @@ function closeNav() {
     document.getElementById("footer").style.marginLeft = "0px";
 }
 
+// Utils
+function adjustColor(hex, mode) {
+    // Ensure the hex code is in the correct format
+    if (hex.startsWith("#")) {
+        hex = hex.slice(1);
+    }
+    
+    // Convert hex to RGB
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    
+    // Adjust colors based on mode
+    if (mode === "red") {
+        g = Math.floor(g * 0.6); // Reduce green
+        b = Math.floor(b * 0.6); // Reduce blue
+    } else if (mode === "green") {
+        r = Math.floor(r * 0.6); // Reduce red
+        b = Math.floor(b * 0.6); // Reduce blue
+    }
+    
+    // Ensure values stay within bounds (0-255)
+    r = Math.max(0, Math.min(255, r));
+    g = Math.max(0, Math.min(255, g));
+    b = Math.max(0, Math.min(255, b)); 
+    
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+var style = getComputedStyle(document.body);
+var forCol = style.getPropertyValue('--foreground');
+export let greenColor = adjustColor(forCol, "green"); // Adjusted green version
+export let redColor = adjustColor(forCol, "red");  // Adjusted red version
+
 // Themes
 export function updateTheme() {
     fetch('http://localhost:3000/settings')

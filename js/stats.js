@@ -1,3 +1,5 @@
+import { redColor, greenColor } from './script.js';
+
 let chart; // Holds the Chart.js instance
 
 // Function to fetch the data
@@ -45,19 +47,31 @@ function formatMilliseconds(milliseconds) {
         .padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
 }
 
-// Calculate Simple Moving Average (SMA)
-function simpleMovingAverage(data, period) {
-    let result = [];
+// Calculate Simple Moving Average (SMA) and Standard Deviation
+function simpleMovingAverageWithStdDev(data, period) {
+    let sma = [];
+    let stdDev = [];
+    let topStdDev = [];
     for (let i = 0; i < data.length; i++) {
         if (i < period - 1) {
-            result.push(null);
+            const subset = data.slice(0, i + 1);
+            const avg = subset.reduce((sum, val) => sum + val, 0) / subset.length;
+            const variance = subset.reduce((sum, val) => sum + Math.pow(val - avg, 2), 0) / subset.length;
+            const std = Math.sqrt(variance);
+            sma.push(avg);
+            stdDev.push(std);
+            topStdDev.push(avg + std);
         } else {
             const subset = data.slice(i - period + 1, i + 1);
             const avg = subset.reduce((sum, val) => sum + val, 0) / period;
-            result.push(avg);
+            const variance = subset.reduce((sum, val) => sum + Math.pow(val - avg, 2), 0) / period;
+            const std = Math.sqrt(variance);
+            sma.push(avg);
+            stdDev.push(std);
+            topStdDev.push(avg + std);
         }
     }
-    return result;
+    return { sma, stdDev, topStdDev };
 }
 
 // Update the chart
@@ -87,7 +101,7 @@ async function updateChart() {
 
     const labels = times.map((_, index) => `Run ${index + 1}`);
     const chartData = times.map((entry) => entry.time);
-    let movingAvgData = showMovingAvg ? simpleMovingAverage(chartData, Math.min(chartData.length - 3, 5)) : [];
+    let { sma: movingAvgData, stdDev: stdDeviationData, topStdDev: topStdDeviationData } = showMovingAvg ? simpleMovingAverageWithStdDev(chartData, 5) : { sma: [], stdDev: [], topStdDev: [] };
 
     if (chart) {
         chart.destroy();
@@ -117,8 +131,22 @@ async function updateChart() {
                         data: movingAvgData,
                         backgroundColor: `${drkForCol}50`,
                         borderColor: drkForCol,
-                        borderWidth: 2,
-                        borderDash: [5, 5], // Dotted line
+                        borderWidth: 1.5,
+                        borderDash: [5, 5],
+                    },
+                    {
+                        label: `Bottom Standard Deviation`,
+                        data: stdDeviationData,
+                        borderColor: redColor,
+                        borderWidth: 1,
+                        borderDash: [3, 3],
+                    },
+                    {
+                        label: `Top Standard Deviation`,
+                        data: topStdDeviationData,
+                        borderColor: greenColor,
+                        borderWidth: 1,
+                        borderDash: [3, 3],
                     }]
                     : []),
             ],

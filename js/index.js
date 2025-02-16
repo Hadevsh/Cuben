@@ -1,5 +1,5 @@
 import { showToast } from './toast.js';
-import { updateTheme } from './script.js';
+import { updateTheme, redColor, greenColor } from './script.js';
 
 // ----------------------------------------------------- Timer -----------------------------------------------------
 let timerDisplay = document.getElementById('timer');
@@ -9,46 +9,7 @@ let running = false;
 let preparing = false;
 let holdTimeout;
 
-
-function adjustColor(hex, mode) {
-    // Ensure the hex code is in the correct format
-    if (hex.startsWith("#")) {
-        hex = hex.slice(1);
-    }
-    
-    // Convert hex to RGB
-    let r = parseInt(hex.substring(0, 2), 16);
-    let g = parseInt(hex.substring(2, 4), 16);
-    let b = parseInt(hex.substring(4, 6), 16);
-    
-    // Adjust colors based on mode
-    if (mode === "red") {
-        g = Math.floor(g * 0.6); // Reduce green
-        b = Math.floor(b * 0.6); // Reduce blue
-    } else if (mode === "green") {
-        r = Math.floor(r * 0.6); // Reduce red
-        b = Math.floor(b * 0.6); // Reduce blue
-    }
-    
-    // Ensure values stay within bounds (0-255)
-    r = Math.max(0, Math.min(255, r));
-    g = Math.max(0, Math.min(255, g));
-    b = Math.max(0, Math.min(255, b)); 
-    
-    return `rgb(${r}, ${g}, ${b})`;
-}
-
-// Example usage
-var style = getComputedStyle(document.body);
-var forCol = style.getPropertyValue('--foreground');
-
-let greenColor = adjustColor(forCol, "green"); // Adjusted green version
 let timerColor = 'var(--text)';
-let redColor = adjustColor(forCol, "red");  // Adjusted red version
-
-// let greenColor = 'rgb(114, 232, 46)'; // Must be rgb for style comparison
-// let timerColor = 'var(--text)';
-// let redColor = '#e82e2e';
 
 document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' && !preparing && !running) {
