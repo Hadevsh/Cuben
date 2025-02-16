@@ -48,6 +48,10 @@ var forCol = style.getPropertyValue('--foreground');
 export let greenColor = adjustColor(forCol, "green"); // Adjusted green version
 export let redColor = adjustColor(forCol, "red");  // Adjusted red version
 
+export function rgbToAlpha(rgbValue, alpha) {
+    return rgbValue.replace(')', `, ${alpha})`).replace('rgb', 'rgba');
+}
+
 // Themes
 export function updateTheme() {
     fetch('http://localhost:3000/settings')

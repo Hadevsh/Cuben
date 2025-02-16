@@ -1,4 +1,4 @@
-import { redColor, greenColor } from './script.js';
+import { redColor, greenColor, rgbToAlpha } from './script.js';
 
 let chart; // Holds the Chart.js instance
 
@@ -137,16 +137,14 @@ async function updateChart() {
                     {
                         label: `Bottom Standard Deviation`,
                         data: stdDeviationData,
-                        borderColor: redColor,
-                        borderWidth: 1,
-                        borderDash: [3, 3],
+                        borderColor: rgbToAlpha(redColor, 0.5),
+                        borderWidth: 1
                     },
                     {
-                        label: `Top Standard Deviation`,
+                        label: false,
                         data: topStdDeviationData,
-                        borderColor: greenColor,
-                        borderWidth: 1,
-                        borderDash: [3, 3],
+                        borderColor: rgbToAlpha(greenColor, 0.5),
+                        borderWidth: 1
                     }]
                     : []),
             ],
