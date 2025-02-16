@@ -110,7 +110,6 @@ async function updateChart() {
     var style = getComputedStyle(document.body);
     var foregroundCol = style.getPropertyValue('--foreground');
     var drkForCol = style.getPropertyValue('--darker-foreground');
-    var textCol = style.getPropertyValue('--text');
 
     const ctx = document.getElementById('statsChart').getContext('2d');
     chart = new Chart(ctx, {
@@ -129,7 +128,7 @@ async function updateChart() {
                     ? [{
                         label: `Simple Moving Average`,
                         data: movingAvgData,
-                        backgroundColor: `${drkForCol}50`,
+                        backgroundColor: `${drkForCol}70`,
                         borderColor: drkForCol,
                         borderWidth: 1.5,
                         borderDash: [5, 5],
@@ -137,13 +136,15 @@ async function updateChart() {
                     {
                         label: `Std Deviation`,
                         data: stdDeviationData,
-                        borderColor: rgbToAlpha(redColor, 0.5),
+                        backgroundColor: rgbToAlpha(redColor, 0.3),
+                        borderColor: rgbToAlpha(redColor, 0.7),
                         borderWidth: 1
                     },
                     {
                         label: `Std Deviation`,
                         data: topStdDeviationData,
-                        borderColor: rgbToAlpha(greenColor, 0.5),
+                        backgroundColor: rgbToAlpha(greenColor, 0.3),
+                        borderColor: rgbToAlpha(greenColor, 0.7),
                         borderWidth: 1
                     }]
                     : []),
@@ -152,7 +153,7 @@ async function updateChart() {
         options: {
             tension: 0.4,
             responsive: true,
-            color: textCol,
+            color: foregroundCol,
             plugins: {
                 tooltip: {
                     callbacks: {
