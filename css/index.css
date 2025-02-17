@@ -113,6 +113,14 @@
     background-color: transparent;
 }
 
+input[type=color] {
+    width: 50px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+}
+
 /* Close Button */
 .close-btn {
     color: var(--foreground);
