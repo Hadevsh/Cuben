@@ -107,6 +107,11 @@
     margin-left: 10px; /* Set desired left margin */
 }
 
+/* Theme Modal */
+#theme-modal {
+
+}
+
 /* Close Button */
 .close-btn {
     color: var(--foreground);

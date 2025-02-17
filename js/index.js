@@ -103,6 +103,28 @@ function addTimeToSession() {
     findBestN(); // Find best of n and display it
     findAverageN(); // Find average of n and display it
 }
+
+// ----------------------------------------------------- Custom Theme ----------------------------------------------------- 
+const themeModal = document.getElementById("theme-modal");
+const themeBtn = document.getElementById("custom-theme-btn");
+
+// Open the theme modal
+themeBtn.addEventListener("click", () => {
+    themeModal.style.display = "block";
+});
+
+// Close the modal
+function closeTheme() {
+    themeModal.style.display = "none";
+}
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener("click", (event) => {
+    if (event.target === themeModal) {
+        closeTheme();
+    }
+});
+
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
 const infoBtn = document.getElementById("info-btn");
@@ -707,6 +729,7 @@ window.addTimeToSession = addTimeToSession;
 window.saveSettings = saveSettings;
 window.closeSettings = closeSettings;
 window.closeInfo = closeInfo;
+window.closeTheme = closeTheme;
 window.openNav = openNav;
 window.closeNav = closeNav;
 window.applyScramble = applyScramble;
