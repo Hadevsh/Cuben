@@ -109,7 +109,10 @@
 
 /* Theme Modal */
 #theme-modal {
-    margin-top: -150px;
+    position: absolute;
+    width: 500px;
+    right: 0px;
+    top: 0px;
     background-color: transparent;
 }
 
