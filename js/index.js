@@ -131,24 +131,28 @@ const themeColors = document.querySelectorAll(
 );
 let styleSheets = document.styleSheets; // Get all stylesheets
 
+function updateCustomTheme(input) {
+    let colorElem = input.id.replace("th", "-");
+    let colorVal = input.value;
+
+    for (let sheet of styleSheets) {
+        if (sheet.href && sheet.href.includes('style.css')) { 
+            for (let rule of sheet.cssRules) {
+                if (rule.selectorText === ':root') {
+                    rule.style.setProperty(colorElem, colorVal);
+                }
+            }
+        }
+    }
+}
+
 customThemeCheck.addEventListener("change", event => {
     console.log(customThemeCheck.checked);
     if (customThemeCheck.checked) {
         themeColors.forEach(input => {
-            console.log(input);
+            updateCustomTheme(input);
             input.addEventListener("input", event => {
-                let colorElem = input.id.replace("th", "-");
-                let colorVal = input.value;
-        
-                for (let sheet of styleSheets) {
-                    if (sheet.href && sheet.href.includes('style.css')) { 
-                        for (let rule of sheet.cssRules) {
-                            if (rule.selectorText === ':root') {
-                                rule.style.setProperty(colorElem, colorVal);
-                            }
-                        }
-                    }
-                }
+                updateCustomTheme(input);
             });
         });
     } else {
