@@ -253,6 +253,7 @@ hr {
     font-size: 30px;
     margin-left: 10px;
     transition: color 0.5s, opacity 0.5s;
+    z-index: 10;
 }
 
 .opennav:hover {
@@ -290,7 +291,7 @@ hr {
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-.sidenav img, .sidenav .image {
+.sidenav img {
     margin-left: 10px;
     background-color: transparent;
     width: 100px;
@@ -398,4 +399,53 @@ footer h1 span {
     font-weight: 300;
     margin-left: 5px;
     margin-bottom: 5px;
+}
+
+#cube {
+    width: 300px;
+    height: 150px;
+    position: relative;
+    left: 25%;
+    top: 0;
+    
+    margin-left: -150px;
+    background: transparent;
+    transform-style: preserve-3d;
+}
+
+#cube::before {
+    display: block;
+    content: '';
+    position: absolute;
+}
+
+#cube::before {
+    width: 120px;
+    height: 168px;
+    left: 120px;
+    padding: 0;
+    top: -65px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(30deg, transparent 26%, #ccc 26.3%, #ccc 74%, transparent 74.3%),
+                        linear-gradient(150deg, transparent 26%, #999 26.3%, #999 74%, transparent 74.3%),
+                        linear-gradient(150deg, transparent 26%, #eee 26.3%, #eee 73%, transparent 73%),
+                        linear-gradient(30deg, transparent 27%, #eee 27%, #eee 74%, transparent 74.3%),
+                        radial-gradient(circle at center, #eee 20%, transparent 20%);
+    background-size: 50% 60%;
+    background-position: 0 100%,
+                            100% 100%,
+                            0 48.5%,
+                            100% 48.5%,
+                            50% 60%;
+    animation: cube-drop 6000ms infinite alternate linear;
+    z-index: 2;
+}
+
+#cube::after {
+    width: 113px;
+    height: 100px;
+    left: 92px;
+    top: 164px;
+    z-index: 0;
+    animation: cube-shadow 6000ms infinite alternate linear;
 }
