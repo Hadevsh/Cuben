@@ -125,6 +125,38 @@ window.addEventListener("click", (event) => {
     }
 });
 
+const customThemeCheck = document.getElementById("use-custom-theme");
+const themeColors = document.querySelectorAll(
+    "#th-background, #th-nav-background, #darker-background, #th-text, #th-foreground, #th-darker-foreground"
+);
+let styleSheets = document.styleSheets; // Get all stylesheets
+
+customThemeCheck.addEventListener("change", event => {
+    console.log(customThemeCheck.checked);
+    if (customThemeCheck.checked) {
+        themeColors.forEach(input => {
+            console.log(input);
+            input.addEventListener("change", event => {
+                let colorElem = input.id.replace("th", "-");
+                let colorVal = input.value;
+        
+                for (let sheet of styleSheets) {
+                    if (sheet.href && sheet.href.includes('style.css')) { 
+                        for (let rule of sheet.cssRules) {
+                            if (rule.selectorText === ':root') {
+                                rule.style.setProperty(colorElem, colorVal);
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    } else {
+        updateTheme();
+    }
+});
+
+
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
 const infoBtn = document.getElementById("info-btn");
