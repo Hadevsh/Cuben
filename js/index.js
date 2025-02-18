@@ -136,7 +136,7 @@ customThemeCheck.addEventListener("change", event => {
     if (customThemeCheck.checked) {
         themeColors.forEach(input => {
             console.log(input);
-            input.addEventListener("change", event => {
+            input.addEventListener("input", event => {
                 let colorElem = input.id.replace("th", "-");
                 let colorVal = input.value;
         
