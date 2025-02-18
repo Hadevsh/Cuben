@@ -118,13 +118,6 @@ function closeTheme() {
     themeModal.style.display = "none";
 }
 
-// Close the modal when clicking outside of the modal content
-window.addEventListener("click", (event) => {
-    if (event.target === themeModal) {
-        closeTheme();
-    }
-});
-
 const customThemeCheck = document.getElementById("use-custom-theme");
 const themeColors = document.querySelectorAll(
     "#th-background, #th-nav-background, #darker-background, #th-text, #th-foreground, #th-darker-foreground"
