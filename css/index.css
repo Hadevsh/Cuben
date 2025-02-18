@@ -109,6 +109,7 @@
 
 /* Theme Modal */
 #theme-modal {
+    display: none;
     position: absolute;
     width: 500px;
     right: 0px;
