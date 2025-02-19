@@ -64,9 +64,9 @@
 
 #custom-theme-btn {
     position: absolute;
-    font-size: 17px;
-    top: 20px;
-    right: 95px;
+    font-size: 15px;
+    top: 22px;
+    right: 90px;
     color: var(--foreground);
     transition: color 0.3s, transform 0.5s ease;
 }
