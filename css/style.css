@@ -304,7 +304,7 @@ hr {
     font-size: 25px;
     background-color: transparent;
     display: block;
-    border-left: 0px solid #fff;
+    border-left: 0px solid transparent;
     transition: color 0.3s, border 0.1s ease-out;
 }
   
