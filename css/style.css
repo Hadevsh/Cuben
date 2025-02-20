@@ -294,11 +294,20 @@ hr {
 .sidenav h1 {
     color: var(--text);
     background-color: transparent;
-    margin: -30px 0 20px 20px;
+    margin: 20px 0 20px 20px;
     padding: 0;
     font-weight: 900;
     text-decoration: underline var(--foreground) 2px;
     text-underline-offset: 5px;
+    transition: color 0.4s, text-decoration 0.4s, letter-spacing 0.3s, text-shadow 0.3s;
+}
+
+.sidenav h1:hover {
+    text-shadow: -2px 2px 2px var(--selection);
+    letter-spacing: 2px;
+    color: var(--foreground);
+    text-decoration: underline var(--text) 2px;
+    z-index: 100;
 }
 
 .sidenav img {
@@ -420,7 +429,7 @@ footer p .name:hover {
 
 #cube {
     width: 300px;
-    height: 150px;
+    height: 100px;
     position: relative;
     top: 0;
     margin-left: -150px;
