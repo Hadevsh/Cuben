@@ -217,6 +217,7 @@ export function updateTheme() {
                         rule.style.setProperty('--foreground', foreground);
                         rule.style.setProperty('--darker-foreground', darker_foreground);
                         rule.style.setProperty('--selection', `${foreground}50`);
+                        rule.style.setProperty('--box-shadow', `${text}80`); // Box shadow for CSS logo: var(--text) with 80% alpha
                     }
                 }
             }

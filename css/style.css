@@ -410,7 +410,7 @@ footer h1 span {
     margin-left: -150px;
     background: transparent;
     transform-style: preserve-3d;
-    filter: drop-shadow(-10px 6px 20px var(--text));
+    filter: drop-shadow(-10px 10px 15px var(--box-shadow));
 }
 
 #cube::before {
