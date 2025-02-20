@@ -393,13 +393,27 @@ footer p, footer h1, footer p span, footer h1 span {
 }
 footer h1 {
     font-size: 20px;
+    width: fit-content;
     margin-bottom: -10px;
+    letter-spacing: 2px;
+    transition: color 0.3s, font-weight 0.3s, letter-spacing 0.5s ease;
+}
+footer h1:hover {
+    color: var(--text);
+    font-weight: 900;
+    letter-spacing: 20px;
 }
 footer h1 span {
     font-size: 14px;
     font-weight: 300;
     margin-left: 5px;
     margin-bottom: 5px;
+}
+footer p .name {
+    transition: font-weight 0.3s;
+}
+footer p .name:hover {
+    font-weight: 900;
 }
 
 #cube {
@@ -410,7 +424,7 @@ footer h1 span {
     margin-left: -150px;
     background: transparent;
     transform-style: preserve-3d;
-    filter: drop-shadow(-10px 10px 15px var(--box-shadow));
+    filter: drop-shadow(-11px 4px 15px var(--box-shadow));
 }
 
 #cube::before {
