@@ -131,7 +131,7 @@ input[type=color] {
 }
 
 #copy-custom-theme:hover {
-    transform: rotate(90deg);
+    transform: rotate(45deg);
     cursor: pointer;
     color: var(--text);
 }
