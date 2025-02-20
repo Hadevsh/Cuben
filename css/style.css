@@ -316,7 +316,7 @@ hr {
     background-color: transparent;
     display: block;
     border-left: 0px solid transparent;
-    transition: color 0.3s, border 0.1s ease-out;
+    transition: color 0.3s, border 0.1s ease;
 }
   
 /* When you mouse over the navigation links, change their color */
@@ -410,6 +410,7 @@ footer h1 span {
     margin-left: -150px;
     background: transparent;
     transform-style: preserve-3d;
+    filter: drop-shadow(-10px 6px 20px var(--text));
 }
 
 #cube::before {
