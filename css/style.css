@@ -436,7 +436,6 @@ footer h1 span {
                             0 48.5%,
                             100% 48.5%,
                             50% 60%;
-    animation: cube-drop 6000ms infinite alternate linear;
     z-index: 2;
 }
 
@@ -446,5 +445,4 @@ footer h1 span {
     left: 92px;
     top: 164px;
     z-index: 0;
-    animation: cube-shadow 6000ms infinite alternate linear;
 }
