@@ -118,12 +118,11 @@ function closeTheme() {
     themeModal.style.display = "none";
 }
 
-const customThemeCheck = document.getElementById("use-custom-theme");
 const themeColors = document.querySelectorAll(
     "#th-background, #th-nav-background, #darker-background, #th-text, #th-foreground, #th-darker-foreground"
 );
-let styleSheets = document.styleSheets; // Get all stylesheets
 
+let styleSheets = document.styleSheets; // Get all stylesheets
 function updateCustomTheme(input) {
     let colorElem = input.id.replace("th", "-");
     let colorVal = input.value;
@@ -139,6 +138,7 @@ function updateCustomTheme(input) {
     }
 }
 
+const customThemeCheck = document.getElementById("use-custom-theme");
 customThemeCheck.addEventListener("change", event => {
     console.log(customThemeCheck.checked);
     if (customThemeCheck.checked) {
@@ -153,6 +153,26 @@ customThemeCheck.addEventListener("change", event => {
     }
 });
 
+const customThemeCopy = document.getElementById("copy-custom-theme");
+customThemeCopy.addEventListener("click", event => {
+    copyCustomTheme();
+});
+
+function copyCustomTheme() {
+    let jsonTheme = [];
+    let colorElem = null;
+    let colorVal = null;
+
+    themeColors.forEach(input => {
+        colorElem = input.id.replace("th", "-");
+        colorVal = input.value;
+        jsonTheme.push(
+            JSON.stringify({[colorElem]: colorVal})
+        );
+    });
+    console.log(jsonTheme);
+    navigator.clipboard.writeText(JSON.stringify(jsonTheme, null, 2));
+}
 
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
