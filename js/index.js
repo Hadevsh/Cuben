@@ -159,19 +159,19 @@ customThemeCopy.addEventListener("click", event => {
 });
 
 function copyCustomTheme() {
-    let jsonTheme = [];
+    let jsonTheme = {};
     let colorElem = null;
     let colorVal = null;
 
     themeColors.forEach(input => {
-        colorElem = input.id.replace("th", "-");
+        colorElem = `--${input.id.replace("th", "").toLowerCase()}`;
         colorVal = input.value;
-        jsonTheme.push(
-            JSON.stringify({[colorElem]: colorVal})
-        );
+        jsonTheme[colorElem] = colorVal;
     });
-    console.log(jsonTheme);
-    navigator.clipboard.writeText(JSON.stringify(jsonTheme, null, 2));
+    
+    const formattedJson = JSON.stringify(jsonTheme, null, 4);
+    console.log(formattedJson);
+    navigator.clipboard.writeText(formattedJson);
 }
 
 // ----------------------------------------------------- Info -----------------------------------------------------
