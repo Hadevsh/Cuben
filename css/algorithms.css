@@ -14,7 +14,10 @@
     border: 1px solid var(--nav-background);
     border-radius: 10px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
-    
+    transition: box-shadow 0.3s;
+}
+.card:hover {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
 }
 .card img {
     background: transparent;
