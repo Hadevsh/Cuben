@@ -36,5 +36,20 @@
             "R' U' R U D' R2 U R' U R U' R U' R2 D",
             "y F' U' F R2 u R' U R U' R u' R2"
         ]
+    },
+    "Gc": {
+        "group": "Adjacent Corner Swap",
+        "algorithms": [
+            "R2 U' R U' R U R' U R2 U D' R U' R' D",
+            "y2 R2 F2 R U2 R U2 R' F R U R' U' R' F R2",
+            "R2 u' R U' R U R' u R2 y R U' R'"
+        ]
+    },
+    "Gd": {
+        "group": "Adjacent Corner Swap",
+        "algorithms": [
+            "R U R' U' D R2 U' R U' R' U R' U R2 D'",
+            "R U R' y' R2 u' R U' R' U R' u R2"
+        ]
     }
 }
