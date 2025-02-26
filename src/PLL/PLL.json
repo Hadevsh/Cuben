@@ -16,5 +16,25 @@
             "y2 x R2 D2 R U R' D2 R U' R",
             "y' x' R U' R D2 R' U R D2 R2"
         ]
+    },
+    "F": {
+        "group": "Adjacent Corner Swap",
+        "algorithms": [
+            "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R"
+        ]
+    },
+    "Ga": {
+        "group": "Adjacent Corner Swap",
+        "algorithms": [
+            "R2 U R' U R' U' R U' R2 U' D R' U R D'",
+            "R2 u R' U R' U' R u' R2 y' R' U R"
+        ]
+    },
+    "Gb": {
+        "group": "Adjacent Corner Swap",
+        "algorithms": [
+            "R' U' R U D' R2 U R' U R U' R U' R2 D",
+            "y F' U' F R2 u R' U R U' R u' R2"
+        ]
     }
 }
