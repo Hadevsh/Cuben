@@ -15,20 +15,12 @@ function generateCards(containerId, data) {
     Object.entries(data).forEach(([key, value]) => {
         const card = document.createElement("div");
         card.classList.add("card");
+        card.innerHTML = `
+            <img src="src/${containerId}/${key}.png" alt="${key}">
+            <h3>${key} <span style="color: var(--darker-foreground); font-size: 15px;">${value.group}<span></h3>
+            <p>${value.algorithms[0]}</p>
+        `;
         
-        const img = document.createElement("img");
-        img.src = `src/${containerId}/${key}.png`;
-        img.alt = key;
-        
-        const title = document.createElement("h3");
-        title.textContent = key;
-        
-        const algorithm = document.createElement("p");
-        algorithm.textContent = value.algorithms[0];
-        
-        card.appendChild(img);
-        card.appendChild(title);
-        card.appendChild(algorithm);
         container.appendChild(card);
     });
 }
