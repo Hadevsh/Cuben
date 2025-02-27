@@ -475,3 +475,25 @@ footer p .name:hover {
     top: 164px;
     z-index: 0;
 }
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--background); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--darker-foreground);
+    transition: 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground); 
+}
