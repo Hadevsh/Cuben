@@ -4,7 +4,7 @@
     padding: 20px;
     border-radius: 8px;
     background: var(--background);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
 
 .times-container {
@@ -25,12 +25,12 @@
     align-items: center;
     padding: 10px 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
 }
 
 .time-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 .time-card .time-info {
