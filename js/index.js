@@ -274,6 +274,12 @@ function saveSettings() {
         console.log('Settings saved successfully');
         showToast('Settings saved successfully', 'success');
 
+        if (settings.saveTime === "auto") {
+            document.getElementById("save-time-btn").style.display = "none";
+        } else {
+            document.getElementById("save-time-btn").style.display = "block";
+        }
+
         playSound('save-sound'); // Load save audio file
     });
 
