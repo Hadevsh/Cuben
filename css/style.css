@@ -243,7 +243,7 @@ hr {
 }
 
 .sidenav hr {
-    background: linear-gradient(to left, var(--background) 80%, transparent);
+    background: linear-gradient(to left, transparent, var(--background) 80%, transparent);
     height: 5px;
     border: 0;
 }
