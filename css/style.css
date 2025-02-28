@@ -484,11 +484,13 @@ footer p .name:hover {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: var(--background); 
+    border-radius: 10px;
+    background: var(--nav-background); 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
     background: var(--darker-foreground);
     transition: 0.3s;
 }
