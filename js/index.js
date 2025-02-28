@@ -62,7 +62,7 @@ function startTimer() {
 
 function stopTimer() {
     playSound('end-cube'); // Load stop timer run audio file
-    timerDisplay.style.textShadow = `-3px 3px 10px ${timerColor}`; // Text shadow with the same color as text
+    timerDisplay.style.textShadow = `-3px 3px 10px var(--box-shadow)`; // Text shadow
     clearInterval(timer);
     running = false;
 }
