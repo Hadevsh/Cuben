@@ -89,6 +89,9 @@
     overflow: none;
     background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
 }
+.modal h2, .modal h3 {
+    color: var(--text);
+}
 
 /* Modal Content */
 .modal-content {
@@ -114,6 +117,9 @@
     right: 0px;
     top: 0px;
     background-color: transparent;
+}
+#theme-modal h2 {
+    color: var(--text);
 }
 
 input[type=color] {
