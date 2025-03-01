@@ -22,10 +22,22 @@
         <a href="algorithms.html">Algorithms</a>
     </div>
     <span class="opennav" id="opennav" onclick="openNav()">&#8614;</span>
-
+ 
     <div id="main">
         <div class="algorithm-container">
-            <h1>PLL Algorithms</h1>
+            <div >
+                <h1>PLL Algorithms</h1>
+                <label for="cards-row">Cards per row:</label>
+                <select name="cards-row" id="cards-row">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <!-- Generate more from saved data using JS -->
+                </select>
+            </div>
+            
             <div id="pll">
                 <!-- Will automatically generate -->
             </div>
