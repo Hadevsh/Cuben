@@ -203,13 +203,13 @@ button {
     width: 100px;
     border: 0;
     border-radius: 10px;
-    border: 2px solid var(--nav-background);
+    border: 1px solid var(--nav-background);
     transition: 0.3s;
 }
 
 button:hover {
     color: var(--text);
-    border: 2px solid var(--darker-foreground);
+    border: 1px solid var(--darker-foreground);
 }
 
 select {
