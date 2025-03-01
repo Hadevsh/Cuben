@@ -133,11 +133,13 @@ input[type=color] {
 
 #copy-custom-theme {
     margin-left: 20px;
-    transition: color 0.3s, transform 0.5s ease;
+    text-shadow: 0px 0px 2px var(--box-shadow);
+    transition: color 0.3s, transform 0.5s ease, text-shadow 0.5s ease;
 }
 
 #copy-custom-theme:hover {
-    transform: rotate(45deg);
+    transform: translateY(-5px);
+    text-shadow: 0px 5px 2px var(--box-shadow);
     cursor: pointer;
     color: var(--text);
 }
