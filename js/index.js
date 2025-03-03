@@ -221,7 +221,8 @@ function showUnsaved() {
         bestWorst: document.getElementById("best-worst-toggle").checked ? "on" : "off",
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
         sound: document.getElementById("sound-toggle").checked ? "on" : "off",
-        theme: document.getElementById("theme").value
+        theme: document.getElementById("theme").value,
+        font: document.getElementById("font").value
     };
 
     fetch('http://localhost:3000/settings')
@@ -244,7 +245,7 @@ function showUnsaved() {
 }
 // Attach change event listeners to all relevant inputs
 const inputs = document.querySelectorAll(
-    "#category, #save-time, #average-n, #best-n, #scrambles-toggle, #best-worst-toggle, #penalties-toggle, #sound-toggle, #theme"
+    "#category, #save-time, #average-n, #best-n, #scrambles-toggle, #best-worst-toggle, #penalties-toggle, #sound-toggle, #theme, #font"
 );
 
 inputs.forEach(input => {
@@ -263,7 +264,8 @@ function saveSettings() {
         bestWorst: document.getElementById("best-worst-toggle").checked ? "on" : "off",
         penalties: document.getElementById("penalties-toggle").checked ? "on" : "off",
         sound: document.getElementById("sound-toggle").checked ? "on" : "off",
-        theme: document.getElementById("theme").value
+        theme: document.getElementById("theme").value,
+        font: document.getElementById("font").value
     };
 
     fetch('http://localhost:3000/settings', {
@@ -308,6 +310,7 @@ function updateSettigsDisplay() {
             document.getElementById("penalties-toggle").checked = settings.penalties === "on";
             document.getElementById("sound-toggle").checked = settings.sound === "on";
             document.getElementById("theme").value = settings.theme || "dark";
+            document.getElementById("font").value = settings.font;
 
             // Update what to show
             document.getElementById("category-display").innerText = settings.category || "3x3";
