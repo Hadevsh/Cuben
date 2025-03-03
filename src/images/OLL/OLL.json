@@ -1,0 +1,41 @@
+{
+    "1": {
+        "group": "Dot",
+        "algorithms": [
+            "R U2 R2 F R F' U2 R' F R F'"
+        ]
+    },
+    "2": {
+        "group": "Dot",
+        "algorithms": [
+            "r U r' U2 r U2 R' U2 R U' r'",
+            "y' F R U R' U' F' f R U R' U' f'",
+            "y' F R U R' U' S R U R' U' f'"
+        ]
+    },
+    "3": {
+        "group": "Dot",
+        "algorithms": [
+            "r' R2 U R' U r U2 r' U M'",
+            "y F U R U' R' F' U F R U R' U' F'",
+            "y' f R U R' U' f' U' F R U R' U' F'"
+        ]
+    },
+    "4": {
+        "group": "Dot",
+        "algorithms": [
+            "M U' r U2 r' U' R U' R' M'",
+            "y F U R U' R' F' U' F R U R' U' F'",
+            "y' f R U R' U' f' U F R U R' U' F'"
+        ]
+    },
+    "5": {
+        "group": "Dot",
+        "algorithms": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+}
