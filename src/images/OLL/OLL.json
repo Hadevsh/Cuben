@@ -108,40 +108,31 @@
             "r U r' R U R' U' r U' r'"
         ]
     },
-    "": {
-        "group": "",
+    "17": {
+        "group": "Dot",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "F R' F' R2 r' U R U' R' U' M'",
+            "y2 R U R' U R' F R F' U2 R' F R F'"
         ]
     },
-    "": {
-        "group": "",
+    "18": {
+        "group": "Dot",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r U R' U R U2 r2 U' R U' R' U2 r",
+            "y R U2 R2 F R F' U2 M' U R U' r'"
         ]
     },
-    "": {
-        "group": "",
+    "19": {
+        "group": "Dot",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r' R U R U R' U' M' R' F R F'"
         ]
     },
-    "": {
-        "group": "",
+    "20": {
+        "group": "Dot",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r U R' U' M2 U R U' R' U' M'",
+            "r' R U R U R' U' M2 U R U' r'"
         ]
     },
     "": {
