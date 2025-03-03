@@ -82,40 +82,30 @@
             "M' R' U' R U' R' U2 R U' R r'"
         ]
     },
-    "": {
-        "group": "",
+    "13": {
+        "group": "Knight Move Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "F U R U' R2 F' R U R U' R'",
+            "r U' r' U' r U r' y' R' U R"
         ]
     },
-    "": {
-        "group": "",
+    "14": {
+        "group": "Knight Move Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "R' F R U R' F' R F U' F'"
         ]
     },
-    "": {
-        "group": "",
+    "15": {
+        "group": "Knight Move Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "l' U' l L' U' L U l' U l",
+            "y2 r' U' r R' U' R U r' U r"
         ]
     },
-    "": {
-        "group": "",
+    "16": {
+        "group": "Knight Move Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r U r' R U R' U' r U' r'"
         ]
     },
     "": {
