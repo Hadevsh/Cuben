@@ -30,12 +30,16 @@
         ]
     },
     "5": {
-        "group": "Dot",
+        "group": "Square Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "l' U2 L U L' U l",
+            "y2 r' U2 R U R' U r"
+        ]
+    },
+    "6": {
+        "group": "Square Shape",
+        "algorithms": [
+            "r U2 R' U' R U' r'"
         ]
     }
 }
