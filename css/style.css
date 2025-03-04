@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 
 /* Dark Theme */
 :root {
@@ -185,6 +186,7 @@
     /* font-family: "Montserrat", sans-serif; */
     /* font-family: "Poppins", sans-serif; */
     /* font-family: "Work Sans", sans-serif; */
+    /* font-family: "Funnel Display", sans-serif; */
     /* font-family: "Roboto", sans-serif; */
     /* font-family: "Inconsolata", monospace; */
     /* font-family: "Markazi Text", serif; */
