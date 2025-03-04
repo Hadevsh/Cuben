@@ -60,46 +60,41 @@
             "R' U' R U R' F' R U R' U' R' F R2"
         ]
     },
-    "": {
-        "group": "",
+    "P1": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R U2 R2 U' R2 U' R2 U2 R"
         ]
     },
-    "": {
-        "group": "",
+    "P2": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R' F2 R U2 R U2 R' F2 U' R U' R'"
         ]
     },
-    "": {
-        "group": "",
+    "P3": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R' U' F' R U R' U' R' F R2 U2 R' U2 R"
         ]
     },
-    "": {
-        "group": "",
+    "P4": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R U R' U' R' F R2 U R' U' R U R' U' F'"
         ]
     },
-    "": {
-        "group": "",
+    "P5": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R U' L' U R' U L U L' U L"
         ]
     },
-    "": {
-        "group": "",
+    "P6": {
+        "group": "Pi",
         "algorithms": [
-            "",
-            ""
+            "R2 D' R U R' D R U R U' R' U R U R' U R",
+            "R U D' R U R' D R2 U' R' U' R2 U2 R"
         ]
     },
     "": {
