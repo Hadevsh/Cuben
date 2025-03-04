@@ -331,67 +331,55 @@
             "r' U r2 U' r2 U' r2 U r'"
         ]
     },
-    "": {
-        "group": "",
+    "51": {
+        "group": "I Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "F U R U' R' U R U' R' F'",
+            "y2 f R U R' U' R U R' U' f'"
         ]
     },
-    "": {
-        "group": "",
+    "52": {
+        "group": "I Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "R U R' U R U' B U' B' R'",
+            "y2 R' F' U' F U' R U R' U R",
+            "R U R' U R U' y R U' R' F'"
         ]
     },
-    "": {
-        "group": "",
+    "53": {
+        "group": "Small L Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "l' U2 L U L' U' L U L' U l",
+            "y2 r' U2 R U R' U' R U R' U r",
+            "y r' U' R U' R' U R U' R' U2 r"
         ]
     },
-    "": {
-        "group": "",
+    "54": {
+        "group": "Small L Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r U2 R' U' R U R' U' R U' r'",
+            "y r U R' U R U' R' U R U2 r'"
         ]
     },
-    "": {
-        "group": "",
+    "55": {
+        "group": "I Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "R' F R U R U' R2 F' R2 U' R' U R U R'",
+            "y R U2 R2 U' R U' R' U2 F R F'"
         ]
     },
-    "": {
-        "group": "",
+    "56": {
+        "group": "I Shape",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "r' U' r U' R' U R U' R' U R r' U r",
+            "r U r' U R U' R' U R U' R' r U' r'",
+            "r U r' U R U' R' U R U' M' U' r'"
         ]
     },
-    "": {
-        "group": "",
+    "57": {
+        "group": "Corners Oriented",
         "algorithms": [
-            "",
-            "",
-            "",
-            ""
+            "R U R' U' M' U R U' r'"
         ]
     }
 }
