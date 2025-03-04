@@ -24,46 +24,40 @@
             "F R U R' U' R U R' U' R U R' U' F'"
         ]
     },
-    "": {
-        "group": "",
+    "L1": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "R' U2 R U R' U' R U R' U' R U R' U R"
         ]
     },
-    "": {
-        "group": "",
+    "L2": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "R' U2 R' D' R U2 R' D R2"
         ]
     },
-    "": {
-        "group": "",
+    "L3": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "R U2 R D R' U2 R D' R2"
         ]
     },
-    "": {
-        "group": "",
+    "L4": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "F R' F' r U R U' r'"
         ]
     },
-    "": {
-        "group": "",
+    "L5": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "x R' U R D' R' U' R D"
         ]
     },
-    "": {
-        "group": "",
+    "L6": {
+        "group": "L",
         "algorithms": [
-            "",
-            ""
+            "R' U' R U R' F' R U R' U' R' F R2"
         ]
     },
     "": {
