@@ -97,46 +97,41 @@
             "R U D' R U R' D R2 U' R' U' R2 U2 R"
         ]
     },
-    "": {
-        "group": "",
+    "T1": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "R U2 R' U' R U' R2 U2 R U R' U R"
         ]
     },
-    "": {
-        "group": "",
+    "T2": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "R' U R U2 R' L' U R U' L"
         ]
     },
-    "": {
-        "group": "",
+    "T3": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "y l' U' L U l F' L' F"
         ]
     },
-    "": {
-        "group": "",
+    "T4": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "y2 F R U R' U' R U' R' U' R U R' F'"
         ]
     },
-    "": {
-        "group": "",
+    "T5": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "y' r U R' U' r' F R F'",
+            "R U R D R' U' R D' R2"
         ]
     },
-    "": {
-        "group": "",
+    "T6": {
+        "group": "T",
         "algorithms": [
-            "",
-            ""
+            "R' U R2 D r' U2 r D' R2 U' R"
         ]
     },
     "": {
