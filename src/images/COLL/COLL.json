@@ -1,0 +1,195 @@
+{
+    "H1": {
+        "group": "H",
+        "algorithms": [
+            "R U R' U R U' R' U R U2 R'",
+            "y R U2 R' U' R U R' U' R U' R'"
+        ]
+    },
+    "H2": {
+        "group": "H",
+        "algorithms": [
+            "F R U' R' U R U2 R' U' R U R' U' F'"
+        ]
+    },
+    "H3": {
+        "group": "H",
+        "algorithms": [
+            "R U R' U R U L' U R' U' L"
+        ]
+    },
+    "H4": {
+        "group": "H",
+        "algorithms": [
+            "F R U R' U' R U R' U' R U R' U' F'"
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    },
+    "": {
+        "group": "",
+        "algorithms": [
+            "",
+            ""
+        ]
+    }
+}
