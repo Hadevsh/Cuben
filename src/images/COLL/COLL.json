@@ -134,46 +134,40 @@
             "R' U R2 D r' U2 r D' R2 U' R"
         ]
     },
-    "": {
-        "group": "",
+    "U1": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "R' U' R U' R' U2 R2 U R' U R U2 R'"
         ]
     },
-    "": {
-        "group": "",
+    "U2": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R"
         ]
     },
-    "": {
-        "group": "",
+    "U3": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "R2 D R' U2 R D' R' U2 R'"
         ]
     },
-    "": {
-        "group": "",
+    "U4": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "F R U' R' U R U R' U R U' R' F'"
         ]
     },
-    "": {
-        "group": "",
+    "U5": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "R2 D' R U2 R' D R U2 R"
         ]
     },
-    "": {
-        "group": "",
+    "U6": {
+        "group": "U",
         "algorithms": [
-            "",
-            ""
+            "R2 D' R U R' D R U R U' R' U' R"
         ]
     }
 }
