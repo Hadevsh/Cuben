@@ -7,6 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
 
 /* Dark Theme */
 :root {
@@ -185,9 +186,11 @@
     /* font-family: "Poppins", sans-serif; */
     /* font-family: "Work Sans", sans-serif; */
     /* font-family: "Roboto", sans-serif; */
+    /* font-family: "Inconsolata", monospace; */
+    /* font-family: "Markazi Text", serif; */
     /* font-family: "Big Shoulders", sans-serif; */
     /* font-family: "Caveat", cursive; */
-    /* font-family: "Inconsolata", monospace; */
+    
     background: var(--background);
     color: var(--foreground);
 
