@@ -3,8 +3,11 @@ async function fetchAllData() {
         const pllResponse = await fetch('src/images/PLL/PLL.json');
         const pllData = await pllResponse.json();
         generateCards("pll", pllData);
+        const ollResponse = await fetch('src/images/OLL/OLL.json');
+        const ollData = await ollResponse.json();
+        generateCards("oll", ollData);
     } catch (error) {
-        console.error("Error loading PLL data:", error);
+        console.error("Error loading algorithm data:", error);
     }
 }
 
@@ -28,9 +31,10 @@ function generateCards(containerId, data) {
 function updateCardsPerRow() {
     const cardsPerRow = document.getElementById("cards-row").value;
     const pllContainer = document.getElementById('pll');
+    const ollContainer = document.getElementById('oll');
 
-    // pllContainer.
     pllContainer.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
+    ollContainer.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
 }
 
 const cardsRowInput = document.getElementById("cards-row");
