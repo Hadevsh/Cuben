@@ -25,4 +25,15 @@ function generateCards(containerId, data) {
     });
 }
 
+function updateCardsPerRow() {
+    const cardsPerRow = document.getElementById("cards-row").value;
+    const pllContainer = document.getElementById('pll');
+
+    // pllContainer.
+    pllContainer.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
+}
+
+const cardsRowInput = document.getElementById("cards-row");
+cardsRowInput.addEventListener("change", updateCardsPerRow);
+
 fetchAllData();
