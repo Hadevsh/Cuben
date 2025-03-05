@@ -30,11 +30,15 @@ function generateCards(containerId, data) {
 
 function updateCardsPerRow() {
     const cardsPerRow = document.getElementById("cards-row").value;
-    const pllContainer = document.getElementById('pll');
-    const ollContainer = document.getElementById('oll');
 
-    pllContainer.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
-    ollContainer.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
+    // Attach change event listeners to all relevant inputs
+    const containers = document.querySelectorAll(
+        "#pll, #oll"
+    );
+
+    containers.forEach(container => {
+        container.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
+    });
 }
 
 const cardsRowInput = document.getElementById("cards-row");
