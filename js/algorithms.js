@@ -31,17 +31,37 @@ function generateCards(containerId, data) {
 function updateCardsPerRow() {
     const cardsPerRow = document.getElementById("cards-row").value;
 
-    // Attach change event listeners to all relevant inputs
-    const containers = document.querySelectorAll(
-        "#pll, #oll"
-    );
+    // Save to localStorage
+    localStorage.setItem("cards-row", cardsPerRow);
 
+    // Update layout
+    const containers = document.querySelectorAll("#pll, #oll");
     containers.forEach(container => {
-        container.setAttribute('style', `grid-template-columns: repeat(${cardsPerRow}, 1fr)`);
+        container.style.gridTemplateColumns = `repeat(${cardsPerRow}, 1fr)`;
     });
 }
 
-const cardsRowInput = document.getElementById("cards-row");
-cardsRowInput.addEventListener("change", updateCardsPerRow);
+function initializeCardsPerRow() {
+    // Load from localStorage
+    const cachedValue = localStorage.getItem("cards-row");
+
+    if (cachedValue) {
+        // Set input value and update layout
+        const cardsRowInput = document.getElementById("cards-row");
+        cardsRowInput.value = cachedValue;
+        updateCardsPerRow(); // apply the layout with the cached value
+    }
+}
+
+// Attach event listener after DOM loads
+window.addEventListener("DOMContentLoaded", () => {
+    const cardsRowInput = document.getElementById("cards-row");
+
+    // Set up input listener
+    cardsRowInput.addEventListener("change", updateCardsPerRow);
+
+    // Initialize value from cache
+    initializeCardsPerRow();
+});
 
 fetchAllData();
