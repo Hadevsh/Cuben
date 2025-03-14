@@ -46,6 +46,10 @@
     font-weight: bold;
 }
 
+.controls select {
+    margin-left: 10px;
+}
+
 .time-card .time-info small {
     color: var(--darker-foreground);
 }
