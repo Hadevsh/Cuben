@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuben</title>
+    <link rel="icon" type="image/x-icon" href="/src/images/logo.ico">
+    <link rel="stylesheet" href="css/style.css"> <!-- Defautl styling -->
+    <link rel="stylesheet" href="css/history.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <span href="javascript:void(0)" class="opennav" onclick="closeNav()">&#8612;</span>
+        <div id="cube"></div>
+        <h1 class="title">Cuben</h1>
+        <a href="index.html">Timer</a>
+        <a href="stats.html">Stats</a>
+        <a href="times.html">Times</a>
+        <hr>
+        <a href="algorithms.html">Algorithms</a> <!-- CFOP Algorithms -->
+        <a href="beginner.html">Beginner</a> <!-- Beginner Method -->
+        <a href="history.html">History</a>
+    </div>
+    <span class="opennav" id="opennav" onclick="openNav()">&#8614;</span>
+
+    <div id="main">
+        <div>
+            <h1>The Rubik's Cube</h1>
+        </div>
+
+        <footer id="footer">
+            <h1>Cuben<span>&reg;</span></h1>
+            <hr style="margin-bottom: -10px; margin-top: 15px; opacity: 25%;">
+            <p><span style="font-style: italic; color: var(--darker-foreground); font-weight: 500;">Designed by</span><span class="name">Wiktor Skrzynecki</span></p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/script.js"></script> <!-- Default script -->
+    <script src="js/times.js"></script>
+</body>
+</html>
