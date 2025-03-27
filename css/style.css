@@ -12,6 +12,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bytesized&display=swap');
 
 /* Dark Theme */
 :root {
@@ -198,6 +199,7 @@
     /* font-family: "Caveat", cursive; */
     /* font-family: "Sour Gummy", sans-serif; */
     /* font-family: "Shadows Into Light", cursive; */
+    /* font-family: "Bytesized", sans-serif; */
     
     background: var(--background);
     color: var(--foreground);
