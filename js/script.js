@@ -224,6 +224,11 @@ export function updateTheme() {
                 }
             }
         }
+
+        const fontSelect = document.getElementById("font");
+        for (let font of fontSelect) {
+            font.style.fontFamily = `${font.value.substring(0, font.value.lastIndexOf(" "))}`;
+        }
     })
 }
 document.addEventListener("DOMContentLoaded", updateTheme());
