@@ -18,6 +18,15 @@
     margin-top: 10px;
 }
 
+.algorithm-container h1 i {
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+.algorithm-container h1 i:hover {
+    cursor: pointer;
+    color: var(--text);
+}
+
 .card {
     display: flex; 
     flex-direction: column; 
