@@ -37,6 +37,17 @@ function updateCardsPerRow() {
     // Update layout
     const containers = document.querySelectorAll("#pll, #oll");
     containers.forEach(container => {
+        const dropdown = document.getElementById(`dropdown-${container.id}`);
+        dropdown.addEventListener("click", () => {
+            if (container.style.display === `none`) {
+                dropdown.style.transform = `rotate(180deg)`;
+                container.style.display = `grid`;
+            }
+            else {
+                dropdown.style.transform = `rotate(180deg)`;
+                container.style.display = `none`;
+            }
+        })
         container.style.gridTemplateColumns = `repeat(${cardsPerRow}, 1fr)`;
     });
 }
