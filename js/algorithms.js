@@ -38,13 +38,17 @@ function updateCardsPerRow() {
     const containers = document.querySelectorAll("#pll, #oll");
     containers.forEach(container => {
         const dropdown = document.getElementById(`dropdown-${container.id}`);
+
+        // All sections hidden by default (cache saving later)
+        container.style.display = `none`;
+        console.log(container.style.display);
         dropdown.addEventListener("click", () => {
             if (container.style.display === `none`) {
                 dropdown.style.transform = `rotate(180deg)`;
                 container.style.display = `grid`;
             }
             else {
-                dropdown.style.transform = `rotate(180deg)`;
+                dropdown.style.transform = `rotate(0deg)`;
                 container.style.display = `none`;
             }
         })

@@ -63,7 +63,3 @@
     padding: 10px 30px;
     border-bottom: 1px solid var(--darker-foreground);
 }
-
-#pll {
-    display: grid;
-}
