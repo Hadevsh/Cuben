@@ -53,6 +53,11 @@
     margin-bottom: 0;
 }
 
+#dropdown-cfop {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
 #pll, #oll {
     display: none;
     grid-template-columns: repeat(3, 1fr);
