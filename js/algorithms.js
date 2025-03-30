@@ -35,7 +35,7 @@ function updateCardsPerRow() {
     localStorage.setItem("cards-row", cardsPerRow);
 
     // Update layout
-    const containers = document.querySelectorAll("#pll, #oll");
+    const containers = document.querySelectorAll("#pll, #oll, #cfop");
     containers.forEach(container => {
         const dropdown = document.getElementById(`dropdown-${container.id}`);
 
@@ -46,6 +46,7 @@ function updateCardsPerRow() {
             if (container.style.display === `none`) {
                 dropdown.style.transform = `rotate(180deg)`;
                 container.style.display = `grid`;
+                if (container.id === "cfop") { container.style.display = `block`; }
             }
             else {
                 dropdown.style.transform = `rotate(0deg)`;
