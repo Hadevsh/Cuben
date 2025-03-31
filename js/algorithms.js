@@ -39,7 +39,7 @@ function updateCardsPerRow() {
     localStorage.setItem("cards-row", cardsPerRow);
 
     // Update layout
-    const containers = document.querySelectorAll("#pll, #oll, #starred, #cfop");
+    const containers = document.querySelectorAll("#pll, #oll, #starred, #complete, #cfop");
     containers.forEach(container => {
         const dropdown = document.getElementById(`dropdown-${container.id}`);
 
