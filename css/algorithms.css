@@ -52,6 +52,13 @@
 .card p {
     margin-bottom: 0;
 }
+.card .options {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    font-size: 20px;
+    gap: 25px;
+}
 
 #dropdown-cfop {
     font-size: 30px;

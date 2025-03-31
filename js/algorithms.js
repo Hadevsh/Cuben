@@ -22,6 +22,10 @@ function generateCards(containerId, data) {
             <img src="src/images/${containerId}/${key}.png" alt="${key}">
             <h3>${key} <span style="color: var(--darker-foreground); font-size: 15px;">${value.group}<span></h3>
             <p>${value.algorithms[0]}</p>
+            <div class="options">
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa fa-check"></i>
+            </div>
         `;
         
         container.appendChild(card);
