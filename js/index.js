@@ -174,6 +174,21 @@ function copyCustomTheme() {
     navigator.clipboard.writeText(formattedJson);
 }
 
+function updateCustomThemeSelect() {
+    fetch('http://localhost:3000/themes')
+    .then(response => response.json())
+    .then(themes => {
+        const themeSelect = document.getElementById("saved-themes");
+        for (let theme in themes) {
+            const selection = document.createElement('option');
+            selection.value = theme;
+            selection.innerHTML = theme;
+            themeSelect.appendChild(selection);
+        }
+    });
+}
+updateCustomThemeSelect();
+
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
 const infoBtn = document.getElementById("info-btn");

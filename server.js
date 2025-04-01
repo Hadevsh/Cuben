@@ -59,6 +59,8 @@ app.post('/times', (req, res) => {
     res.sendStatus(200);
 });
 
+// TODO: Endpoint to delete a time from a category
+
 // Endpoint to get custom themes
 app.get('/themes', (req, res) => {
     if (fs.existsSync(themesPath)) {
@@ -68,6 +70,10 @@ app.get('/themes', (req, res) => {
         res.json({});
     }
 });
+
+// TODO: Endpoint to add custom theme
+
+// TODO: Endpoint to delete a custom theme
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
