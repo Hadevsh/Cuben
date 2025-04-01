@@ -8,6 +8,7 @@ app.use(cors());
 
 const settingsPath = path.join(__dirname, 'data', 'settings.json');
 const timesPath = path.join(__dirname, 'data', 'times.json');
+const themesPath = path.join(__dirname, 'data', 'themes.json');
 
 // Ensure data folder exists
 if (!fs.existsSync(path.join(__dirname, 'data'))) {
@@ -56,6 +57,16 @@ app.post('/times', (req, res) => {
     times[category].push({ time, date });
     fs.writeFileSync(timesPath, JSON.stringify(times, null, 4));
     res.sendStatus(200);
+});
+
+// Endpoint to get custom themes
+app.get('/themes', (req, res) => {
+    if (fs.existsSync(themesPath)) {
+        const themes = fs.readFileSync(themesPath, 'utf-8');
+        res.json(JSON.parse(themes));
+    } else {
+        res.json({});
+    }
 });
 
 const PORT = 3000;

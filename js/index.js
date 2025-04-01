@@ -164,7 +164,7 @@ function copyCustomTheme() {
     let colorVal = null;
 
     themeColors.forEach(input => {
-        colorElem = `--${input.id.replace("th", "").toLowerCase()}`;
+        colorElem = `-${input.id.replace("th", "").toLowerCase()}`;
         colorVal = input.value;
         jsonTheme[colorElem] = colorVal;
     });
