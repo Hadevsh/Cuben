@@ -128,6 +128,20 @@
     gap: 5px;
     font-size: 17px;
 }
+#delete-custom-theme, #save-custom-theme {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+#delete-custom-theme {
+    color: #f73838;
+}
+#delete-custom-theme:hover {
+    color: #c22222;
+}
+#save-custom-theme:hover {
+    color: var(--text);
+}
+
 
 input[type=color] {
     width: 50px;
