@@ -122,6 +122,13 @@
     color: var(--text);
 }
 
+#theme-modal .th-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 17px;
+}
+
 input[type=color] {
     width: 50px;
     height: 20px;
