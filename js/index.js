@@ -184,6 +184,7 @@ function updateCustomThemeSelect() {
             selection.value = theme;
             selection.innerHTML = theme;
             themeSelect.appendChild(selection);
+            // console.log(themes[theme]["--darker-foreground"])
         }
     });
 }

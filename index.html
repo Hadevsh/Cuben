@@ -57,17 +57,19 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeTheme()">&times;</span>
             <h2>Custom Theme</h2>
-            <hr><br>
             <label for="use-custom-theme">Use custom theme:</label>
             <input type="checkbox" id="use-custom-theme">
             <i class="fa fa-clone" id="copy-custom-theme"></i>
             <br><br>
-            <label for="saved-themes">Saved Themes:</label>
-            <select name="saved-themes" id="saved-themes">
-                <option value="none" selected>----</option>
-                <!-- Generate more from saved data using JS -->
-            </select>
-            <br><br>
+            <div style="display: flex; flex-direction: row;">
+                <label for="saved-themes">Saved Themes:</label>
+                <select name="saved-themes" id="saved-themes" style="margin: 5px 15px;">
+                    <option value="none" selected>None</option>
+                    <!-- Generate more from saved data using JS -->
+                </select>
+                <i class="fa fa-trash"></i>
+            </div>
+            <br>
             <input type="color" id="th-background" value="#202020"/>
             <label for="th-background">Background</label><br>
             <input type="color" id="th-nav-background" value="#1b1b1b"/>
