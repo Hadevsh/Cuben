@@ -1,59 +1,56 @@
+/* Basic page styling */
 body {
-    background-color: #1e1e2f;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    height: 100vh;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    font-family: Arial, sans-serif;
 }
-
-#scene {
-    width: 400px;
-    height: 400px;
-    perspective: 1000px;
-    cursor: grab;
+/* The scene gives us perspective for 3D rendering */
+.scene {
+    width: 300px;
+    height: 300px;
+    perspective: 800px;
 }
-
-#cube {
+/* The cube is a container with 6 faces, set to preserve 3d transforms */
+.cube {
     width: 300px;
     height: 300px;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(-30deg) rotateY(-30deg);
-    transition: transform 0.3s ease;
+    transform: rotateX(-30deg) rotateY(45deg);
+    transition: transform 0.5s;
 }
-
+/* Each face of the cube */
 .face {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background: black;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    border: 1px solid #333;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #000;
     box-sizing: border-box;
 }
-
-.square {
-    width: 100%;
-    height: 100%;
+/* Each sticker on a face – the 3x3 grid pieces */
+.face .sticker {
+    width: calc(100% / 3);
+    height: calc(100% / 3);
+    box-sizing: border-box;
     border: 1px solid #000;
 }
-
-.white { background-color: #ffffff; }
-.yellow { background-color: #ffff00; }
-.blue { background-color: #0000ff; }
-.green { background-color: #00ff00; }
-.red { background-color: #ff0000; }
-.orange { background-color: #ffa500; }
-
-.front { transform: translateZ(50px); }
-.back { transform: rotateY(180deg) translateZ(50px); }
-.left { transform: rotateY(-90deg) translateZ(50px); }
-.right { transform: rotateY(90deg) translateZ(50px); }
-.top { transform: rotateX(90deg) translateZ(50px); }
-.bottom { transform: rotateX(-90deg) translateZ(50px); }
+/* Positioning the 6 faces in 3D space */
+.face.front  { transform: rotateY(0deg)   translateZ(150px); }
+.face.back   { transform: rotateY(180deg) translateZ(150px); }
+.face.right  { transform: rotateY(90deg)  translateZ(150px); }
+.face.left   { transform: rotateY(-90deg) translateZ(150px); }
+.face.top    { transform: rotateX(90deg)  translateZ(150px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(150px); }
+/* Define colors for a solved Rubik’s Cube */
+.face.front  .sticker { background: red; }
+.face.back   .sticker { background: orange; }
+.face.right  .sticker { background: blue; }
+.face.left   .sticker { background: green; }
+.face.top    .sticker { background: white; }
+.face.bottom .sticker { background: yellow; }
