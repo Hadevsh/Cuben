@@ -12,14 +12,6 @@
     /* box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2); */
 }
 
-/* #history, #sources {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    background: var(--background);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
-} */
 .history h1 {
     font-size: 60px;
     color: var(--text);
@@ -39,4 +31,10 @@
     overflow: scroll;
     overflow-x: hidden;
     border-bottom: 1px solid var(--darker-foreground);
+}
+
+.sources {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    padding: 0 15px;
+    border-radius: 15px;
 }
