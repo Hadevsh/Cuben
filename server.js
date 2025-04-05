@@ -9,6 +9,7 @@ app.use(cors());
 const settingsPath = path.join(__dirname, 'data', 'settings.json');
 const timesPath = path.join(__dirname, 'data', 'times.json');
 const themesPath = path.join(__dirname, 'data', 'themes.json');
+const algorithmsPath = path.join(__dirname, 'data', 'algorithms.json');
 
 // Ensure data folder exists
 if (!fs.existsSync(path.join(__dirname, 'data'))) {
@@ -74,6 +75,16 @@ app.get('/themes', (req, res) => {
 // TODO: Endpoint to add custom theme
 
 // TODO: Endpoint to delete a custom theme
+
+// Endpoint to get starred and complete algorithms
+app.get('/algorithms', (req, res) => {
+    if (fs.existsSync(algorithmsPath)) {
+        const algorithms = fs.readFileSync(algorithmsPath, 'utf-8');
+        res.json(JSON.parse(algorithms));
+    } else {
+        res.json({});
+    }
+});
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
