@@ -86,5 +86,7 @@ app.get('/algorithms', (req, res) => {
     }
 });
 
+// TODO: Endpoint to delete and add starred and complete algorithms
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -6,6 +6,7 @@ async function fetchAllData() {
         const ollResponse = await fetch('src/images/OLL/OLL.json');
         const ollData = await ollResponse.json();
         generateCards("oll", ollData);
+        fetchStarredComplete();
     } catch (error) {
         console.error("Error loading algorithm data:", error);
     }
@@ -45,7 +46,6 @@ function updateCardsPerRow() {
 
         // All sections hidden by default (cache saving later)
         container.style.display = `none`;
-        console.log(container.style.display);
         dropdown.addEventListener("click", () => {
             if (container.style.display === `none`) {
                 dropdown.style.transform = `rotate(180deg)`;
@@ -71,6 +71,34 @@ function initializeCardsPerRow() {
         cardsRowInput.value = cachedValue;
         updateCardsPerRow(); // apply the layout with the cached value
     }
+}
+
+// Function do fetch starred and complete algorithms and display them
+function fetchStarredComplete() {
+    const starredDiv = document.getElementById('starred');
+    const completeDiv = document.getElementById('complete');
+
+    fetch('http://localhost:3000/algorithms')
+    .then(response => response.json())
+    .then(algorithms => {
+        const starredPll = algorithms["starred"]["PLL"];
+        const completePll = algorithms["complete"]["OLL"];
+        
+        const starredOll = algorithms["starred"]["PLL"];
+        const completeOll = algorithms["complete"]["OLL"];
+
+        if (starredPll.length === 0 && starredOll.length === 0) {
+            starredDiv.innerHTML = `Nothing starred yet.`;
+        } else {
+            // TODO: Generate starred cards
+        }
+
+        if (completePll.length === 0 && completeOll.length === 0) {
+            completeDiv.innerHTML = `Nothing marked as complete yet.`;
+        } else {
+            // TODO: Generate complete cards
+        }
+    });
 }
 
 // Attach event listener after DOM loads
