@@ -21,13 +21,25 @@ function generateCards(containerId, data) {
         card.classList.add("card");
         card.innerHTML = `
             <img src="src/images/${containerId}/${key}.png" alt="${key}">
-            <h3>${key} <span style="color: var(--darker-foreground); font-size: 15px;">${value.group}<span></h3>
+            <h3>${key} <span style="color: var(--darker-foreground); font-size: 15px;">${value.group}</span></h3>
             <p>${value.algorithms[0]}</p>
             <div class="options">
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa fa-check"></i>
+                <i class="fa fa-star-o" id="star-${key}"></i>
+                <i class="fa fa-check" id="complete-${key}"></i>
             </div>
         `;
+        
+        // Add click event listener for the star icon
+        const star = card.querySelector(`#star-${key}`);
+        star.addEventListener("click", () => {
+            console.log(`Star clicked for ${key}`);
+        });
+        
+        // Add click event listener for the complete icon
+        const complete = card.querySelector(`#complete-${key}`);
+        complete.addEventListener("click", () => {
+            console.log(`Complete clicked for ${key}`);
+        });
         
         container.appendChild(card);
     });
@@ -112,4 +124,6 @@ window.addEventListener("DOMContentLoaded", () => {
     initializeCardsPerRow();
 });
 
-fetchAllData();
+document.addEventListener('DOMContentLoaded', function() {
+    fetchAllData();
+});
