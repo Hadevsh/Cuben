@@ -86,7 +86,26 @@ app.get('/algorithms', (req, res) => {
     }
 });
 
-// TODO: Endpoint to delete and add starred and complete algorithms
+// Endpoint to add starred and complete algorithms
+app.post('/algorithms', (req, res) => {
+    const { type, category, algorithm } = req.body;
+
+    // Validate type.
+    if (!['starred', 'complete'].includes(type)) {
+        return res.status(400).json({ error: 'Invalid type. Must be either "starred" or "complete".' });
+    }
+    // Validate category.
+    if (!data[type][category]) {
+        return res.status(400).json({ error: 'Invalid category. Must be either "PLL" or "OLL".' });
+    }
+    // Add algorithm if not already present.
+    if (!data[type][category].includes(algorithm)) {
+        data[type][category].push(algorithm);
+    }
+    return res.json({ message: `Algorithm added to ${type} in ${category}.`, data });
+});
+
+// TODO: Endpoint to delete starred and complete algorithms
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
