@@ -32,13 +32,13 @@ function generateCards(containerId, data) {
         // Add click event listener for the star icon
         const star = card.querySelector(`#star-${key}`);
         star.addEventListener("click", () => {
-            console.log(`Star clicked for ${key}`);
+            console.log(`Star clicked for ${containerId} ${key}`);
         });
         
         // Add click event listener for the complete icon
         const complete = card.querySelector(`#complete-${key}`);
         complete.addEventListener("click", () => {
-            console.log(`Complete clicked for ${key}`);
+            console.log(`Complete clicked for ${containerId} ${key}`);
         });
         
         container.appendChild(card);
