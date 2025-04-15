@@ -190,14 +190,17 @@ function updateCustomThemeSelect() {
 }
 updateCustomThemeSelect();
 
-const saveCustomTheme = document.getElementById("delete-custom-theme");
-const deleteCustomTheme = document.getElementById("save-custom-theme")
+const themeSelect = document.getElementById("saved-themes");
+const saveCustomTheme = document.getElementById("save-custom-theme");
+const deleteCustomTheme = document.getElementById("delete-custom-theme")
 
 saveCustomTheme.addEventListener("click", () => {
+    console.log(themeSelect.value);
     console.log("saving custom theme");
 })
 
 deleteCustomTheme.addEventListener("click", () => {
+    console.log(themeSelect.value);
     console.log("deleting custom theme");
 })
 
