@@ -190,6 +190,17 @@ function updateCustomThemeSelect() {
 }
 updateCustomThemeSelect();
 
+const saveCustomTheme = document.getElementById("delete-custom-theme");
+const deleteCustomTheme = document.getElementById("save-custom-theme")
+
+saveCustomTheme.addEventListener("click", () => {
+    console.log("saving custom theme");
+})
+
+deleteCustomTheme.addEventListener("click", () => {
+    console.log("deleting custom theme");
+})
+
 // ----------------------------------------------------- Info -----------------------------------------------------
 const infoModal = document.getElementById("info-modal");
 const infoBtn = document.getElementById("info-btn");
